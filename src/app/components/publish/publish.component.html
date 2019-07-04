@@ -1,0 +1,37 @@
+<div class="card">
+
+  <header class="card-header">
+    <p class="card-header-title">
+      MQTT Publisher
+    </p>
+  </header>
+
+  <div class="card-content">
+    <div class="content">
+
+
+      <div class="field">
+        <label class="label">Topic</label>
+        <div class="control">
+          <input class="input" type="text" [(ngModel)]="topic">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Payload</label>
+        <div class="control">
+          <textarea class="textarea" [(ngModel)]="payload"></textarea>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <input type="checkbox" [(ngModel)]="retain"><span class="checkbox-text">Retain</span>
+        </div>
+      </div>
+
+    </div>
+    <footer class="card-footer">
+      <a href="#" (click)="publish()" class="card-footer-item">Publish</a>
+    </footer>
+  </div>

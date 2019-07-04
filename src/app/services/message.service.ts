@@ -51,7 +51,18 @@ export class MessageService {
     this.messages.push(message);
   }
 
+  // Removes a single message
+  remove(message: Message) {
+    this.messages = this.messages.filter(obj => obj !== message);
+  }
+
   clear() {
     this.messages = [];
+  }
+
+  message(level: Level, text: string): void {
+    this.add(
+      new Message(level, text)
+    )
   }
 }

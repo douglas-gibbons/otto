@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subscription } from 'rxjs';
 import { MqttService, IMqttMessage, MqttConnectionState } from 'ngx-mqtt';
 import { mqttSettings, deviceSettings } from '../../environments/environment';
-import { MessageService, Message, Level } from './message.service';
+import { MessageService, Level } from './message.service';
 
 export class Device {
   constructor() { }
@@ -41,7 +41,7 @@ export class DeviceService {
       this.mqttService.connect(mqttSettings);
       this.monitorMqttStatus();
     } catch (e) {
-      this.message(Level.Danger, e);
+      this.messageService.message(Level.Danger, e);
     }
 
   }
@@ -49,27 +49,21 @@ export class DeviceService {
   private monitorMqttStatus() {
     this.mqttService.onError.subscribe(
       event => {
-        this.message(Level.Warning, "MQTT connection failure");
+        this.messageService.message(Level.Warning, "MQTT connection failure");
       }
     );
     this.mqttService.onConnect.subscribe(
       () => {
         this.messageService.clear();
-        this.message(Level.Info, "Connected to MQTT broker")
+        this.messageService.message(Level.Info, "Connected to MQTT broker")
         this.subscribeDevices();
       });
 
     this.mqttService.onOffline.subscribe(
       () => {
-        this.message(Level.Warning, "MQTT connection failure (offline)")
+        this.messageService.message(Level.Warning, "MQTT connection failure (offline)")
         this.subscribeDevices();
       });
-  }
-
-  private message(level: Level, text: string) {
-    this.messageService.add(
-      new Message(level, text)
-    )
   }
 
   // Refresh connection
@@ -136,25 +130,25 @@ export class DeviceService {
           device.isLoading = false;
         },
         e => {
-          this.message(Level.Warning, e.message);
+          this.messageService.message(Level.Warning, e.message);
         }
       );
       this.subscriptions.push(subs);
     }
   }
 
-  public publish(topic: string, message: string, retain: boolean): void {
-    this.mqttService.unsafePublish(topic, message, { qos: 1, retain: retain });
+  public publish(topic: string, message: string, retain: boolean): Observable<void> {
+    return this.mqttService.publish(topic, message, { qos: 1, retain: retain });
   }
 
   public turnOff(device) {
     device.isLoading = true;
-    this.publish(device.commandTopic, "OFF", false);
+    this.publish(device.commandTopic, "OFF", false).subscribe();
 
   }
   public turnOn(device) {
     device.isLoading = true;
-    this.publish(device.commandTopic, "ON", false);
+    this.publish(device.commandTopic, "ON", false).subscribe();
   }
 
 }
