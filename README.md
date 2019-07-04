@@ -39,4 +39,17 @@ Use of "set" and "state" messages is compatible with what [Home Assistant](https
 
 ## Development Environment
 
+### The Docker Way
+
 Run `make up logs` to bring otto up and point a browser to http://localhost:4200/
+
+### The Node Way
+
+
+```
+npm update
+npm install
+npm start
+```
+
+Navigate to: http://localhost:4200/
