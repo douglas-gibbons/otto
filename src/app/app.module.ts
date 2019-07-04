@@ -14,6 +14,7 @@ import { mqttServiceOptions } from '../environments/environment';
 import { NavComponent } from './components/nav/nav.component';
 import { NgModule } from '@angular/core';
 import { PublishComponent } from './components/publish/publish.component';
+import { SubscribeComponent } from './components/subscribe/subscribe.component';
 library.add(fas);
 
 @NgModule({
@@ -24,6 +25,7 @@ library.add(fas);
     MessagesComponent,
     NavComponent,
     PublishComponent,
+    SubscribeComponent,
   ],
   imports: [
     AppRoutingModule,

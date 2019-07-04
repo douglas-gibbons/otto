@@ -1,0 +1,52 @@
+<div class="card">
+
+  <header class="card-header">
+    <p class="card-header-title">
+      MQTT Subscriber
+    </p>
+  </header>
+
+  <div class="card-content">
+    <div class="content">
+      <div class="field">
+        <label class="label">Topic</label>
+        <div class="control">
+          <input class="input" type="text" [(ngModel)]="topic">
+        </div>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <a href="#" (click)="subscribe()" class="card-footer-item">Subscribe</a>
+    </footer>
+  </div>
+</div>
+
+<div class="card"  *ngIf="messages.length > 0">
+
+  <header class="card-header">
+    <p class="card-header-title">
+      Messages
+    </p>
+  </header>
+
+  <div class="card-content">
+    <div class="content">
+
+      <table class="table is-fullwidth">
+        <tr>
+          <th>Topic</th>
+          <th>QoS</th>
+          <th>Retain</th>
+          <th>Payload</th>
+        </tr>
+        <tr *ngFor="let message of messages">
+          <td>{{ message.topic }}</td>
+          <td>{{ message.qos.toString() }}</td>
+          <td>{{ message.retain.toString() }}</td>
+          <td>{{ message.payload.toString() }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>

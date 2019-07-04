@@ -1,2 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 // @import url("https://unpkg.com/bulmaswatch/darkly/bulmaswatch.min.css");
+.card {
+  max-width: 1000px  !important;
+  margin: 20px;
+}
+
+hr {
+  margin: 0;
+}

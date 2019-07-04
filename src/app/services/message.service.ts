@@ -65,4 +65,10 @@ export class MessageService {
       new Message(level, text)
     )
   }
+
+  temporaryMessage(level: Level, text: string): void {
+    let message = new Message(level, text);
+    this.add(message);
+    setTimeout(() => this.remove(message), 3000);
+  }
 }

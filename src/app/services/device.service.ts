@@ -141,6 +141,9 @@ export class DeviceService {
     return this.mqttService.publish(topic, message, { qos: 1, retain: retain });
   }
 
+  public observe(topic: string): Observable<IMqttMessage> {
+    return this.mqttService.observeRetained(topic);
+  }
   public turnOff(device) {
     device.isLoading = true;
     this.publish(device.commandTopic, "OFF", false).subscribe();
