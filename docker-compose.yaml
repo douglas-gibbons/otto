@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+
+  otto:
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    ports:
+       - 4200:4200
+
+    volumes:
+      - ./:/otto
+      - node_modules:/otto/node_modules
+
+volumes:
+    node_modules:
+      driver: local

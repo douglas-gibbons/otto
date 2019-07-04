@@ -1,0 +1,49 @@
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      Switches
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+
+      <ng-container *ngFor="let device of devices">
+        <p *ngIf="device.type == 'switch'">
+          <a class="button is-left" (click)="action(device)">
+            <span [ngClass]="{'has-text-danger': device.isOn(), 'has-text-grey': ! device.isOn() }">
+
+              <fa-icon icon="power-off" *ngIf="! device.isLoading"></fa-icon>
+              <fa-icon [icon]="['fas', 'spinner']" [pulse]="true" *ngIf="device.isLoading"></fa-icon>
+            </span>
+            &nbsp; {{device.name}}
+          </a>
+        </p>
+
+      </ng-container>
+
+    </div>
+  </div>
+  <footer class="card-footer">
+  </footer>
+</div>
+
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      Sensors
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <ul class="sensor">
+        <ng-container *ngFor="let device of devices">
+          <li *ngIf="device.type == 'sensor'">
+            {{ device.name }} : {{ device.state}} {{ device.unitOfMeasurement }}
+        </ng-container>
+      </ul>
+
+    </div>
+  </div>
+  <footer class="card-footer">
+  </footer>
+</div>

@@ -1,0 +1,14 @@
+<div class="card" *ngIf="messageService.messages.length > 0">
+  <div class="card-content">
+    <div class="content">
+
+      <ng-container *ngFor='let message of messageService.messages'>
+        <span class="has-text-{{ message.levelString() }}">
+          <fa-icon icon="{{ message.levelIcon() }}"></fa-icon>
+        </span>
+        {{message.text}}
+        <br />
+      </ng-container>
+    </div>
+  </div>
+</div>

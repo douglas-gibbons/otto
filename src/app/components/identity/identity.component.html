@@ -1,0 +1,66 @@
+<div class="card">
+
+  <header class="card-header">
+    <p class="card-header-title">
+      MQTT Connection
+    </p>
+  </header>
+
+  <div class="card-content">
+    <div class="content">
+
+      <div class="field">
+        <label class="label">Hostname</label>
+        <div class="control">
+          <input class="input" type="text" [(ngModel)]="mqttSettings.hostname" (ngModelChange)="saveSetting('hostname')">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Port</label>
+        <div class="control">
+          <input class="input" type="number" [(ngModel)]="mqttSettings.port" (ngModelChange)="saveSetting('port')">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Protocol</label>
+        <div class="control">
+          <div class="select">
+            <select [(ngModel)]="mqttSettings.protocol" (ngModelChange)="saveSetting('protocol')">
+              <option *ngFor="let protocol of protocols">{{protocol}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Path</label>
+        <div class="control">
+          <input class="input" type="text" [(ngModel)]="mqttSettings.path" (ngModelChange)="saveSetting('path')">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Username</label>
+        <div class="control">
+          <input class="input" type="text" [(ngModel)]="mqttSettings.username" (ngModelChange)="saveSetting('username')">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+          <input class="input" type="password" [(ngModel)]="mqttSettings.password" (ngModelChange)="saveSetting('password')">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Discovery Prefix</label>
+        <div class="control">
+          <input class="input" type="text" [(ngModel)]="deviceSettings.prefix" (ngModelChange)="saveDeviceSetting('prefix')">
+        </div>
+      </div>
+
+    </div>
+    <footer class="card-footer">
+      <a href="#" (click)="refresh()" class="card-footer-item">Connect</a>
+    </footer>
+  </div>

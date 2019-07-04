@@ -1,0 +1,12 @@
+FROM node:10.16.0-alpine as node
+
+RUN \
+  apk add --no-cache git && \
+  npm install -g @angular/cli && \
+  npm install -g @angular/compiler-cli
+
+COPY entrypoint.sh /entrypoint.sh
+
+WORKDIR /otto
+EXPOSE 4200
+ENTRYPOINT ["/entrypoint.sh"]
