@@ -38,7 +38,10 @@ Payload (change the state and command topic prefixes as appropriate):
 __Retain__ should set to true
 
 
-ʘttʘ's "Publish" panel can be used to publish this message.
+ʘttʘ's "Publish" panel can be used to publish this message, like this:
+
+![screenshot](tasmota-otto-config.png)
+
 
 #### Testing it out
 
