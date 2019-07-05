@@ -1,4 +1,4 @@
-baseURL = ""
+baseURL = "/docs/"
 
 languageCode = "en-us"
 DefaultContentLanguage = "en"
@@ -10,19 +10,6 @@ pygmentsStyle = "monokailight"
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir= false
 enableMissingTranslationPlaceholders = false
-
-
-# [Languages]
-# [Languages.en]
-# title = "Documentation for Hugo docDock"
-# weight = 1
-# languageName = "English"
-#
-# [Languages.fr]
-# title = "Documentation du thème docDock"
-# weight = 2
-# languageName = "Français"
-
 
 [params]
 editURL = "https://github.com/douglas-gibbons/otto/blob/master/docs/content/"
