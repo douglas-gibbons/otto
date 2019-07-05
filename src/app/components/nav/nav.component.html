@@ -1,8 +1,34 @@
-<div class="tabs is-boxed">
+<!-- desktop -->
+<div class="tabs is-boxed is-hidden-mobile ">
   <ul>
-  <li  routerLinkActive="is-active"><a routerLink="/identity">Identity</a></li>
-  <li routerLinkActive="is-active"><a routerLink="/control">Control</a></li>
-  <li routerLinkActive="is-active"><a routerLink="/subscribe">Subscribe</a></li>
-  <li routerLinkActive="is-active"><a routerLink="/publish">Publish</a></li>
-</ul>
+    <li routerLinkActive="is-active"><a routerLink="/identity">Identity</a></li>
+    <li routerLinkActive="is-active"><a routerLink="/control">Control</a></li>
+    <li routerLinkActive="is-active"><a routerLink="/subscribe">Subscribe</a></li>
+    <li routerLinkActive="is-active"><a routerLink="/publish">Publish</a></li>
+  </ul>
+</div>
+
+<!-- mobile -->
+<div class="dropdown is-hidden-tablet" #mobileMenu>
+
+  <div class="dropdown-trigger">
+
+    <a role="button" (click)="toggleNavbar()" class="navbar-burger" #navBurger>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+    <div class="dropdown-content">
+      <a class="dropdown-item" routerLinkActive="is-active" routerLink="/identity">Identity</a>
+      <a class="dropdown-item" routerLinkActive="is-active" routerLink="/control">Control</a>
+      <a class="dropdown-item" routerLinkActive="is-active" routerLink="/subscribe">Subscribe</a>
+      <a class="dropdown-item" routerLinkActive="is-active" routerLink="/publish">Publish</a>
+    </div>
+  </div>
+
+</div>
+
+<div>
 </div>
