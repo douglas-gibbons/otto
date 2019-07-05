@@ -1,12 +1,14 @@
 +++
-title = "otto"
-description = "otto homepage"
+title = "ʘttʘ"
+description = "ʘttʘ homepage"
 +++
 
+## <center>ʘttʘ<c/enter>
+<center>__MQTT Control Panel__</center>
 
-# MQTT Control Panel
+----------------------------
 
-Otto is a simple web application to control switches and view sensor output using MQTT over websockets. Connection settings are configured through the web interface, and stored in the browser's [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API).
+ʘttʘ is a web application used to control switches and view sensor output using MQTT over websockets. Connection settings are configured through the web interface, and stored in the browser's [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API).
 
 There are also features for more general publish/subscribe of MQTT topics.
 
@@ -17,7 +19,7 @@ There are also features for more general publish/subscribe of MQTT topics.
 * Retained topics for device discovery. See [home assistant documentation](https://www.home-assistant.io/docs/mqtt/discovery/) for format of auto discovery messages.
 
 
-## Running Otto
+## Running ʘttʘ
 
 Just navigate to __[https://otto.zenly.xyz/](https://otto.zenly.xyz/)__.
 
@@ -26,7 +28,7 @@ Just navigate to __[https://otto.zenly.xyz/](https://otto.zenly.xyz/)__.
 
 The interface reads [discovery](https://www.home-assistant.io/docs/mqtt/discovery/) messages from the MQTT broker and uses these to configure what devices to display and control.
 
-For example, suppose we configure otto to use a "discover prefix" of "homeassistant", and we publish a retained message like this:
+For example, suppose we configure ʘttʘ to use a "discover prefix" of "homeassistant", and we publish a retained message like this:
 
 * topic: `homeassistant/switch/sprinkler/config`
 * payload: `{"name": "Sprinkler system", "state_topic": "homeassistant/switch/sprinkler/state", "command_topic": "homeassistant/switch/sprinkler/set"}`

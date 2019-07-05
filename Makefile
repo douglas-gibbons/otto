@@ -15,3 +15,6 @@ logs: ## Docker logs
 
 down: ## put the dev stack down
 	docker-compose down
+
+serve-docs: ## Bring up the docs. Requires hugo
+	cd docs && hugo server -D

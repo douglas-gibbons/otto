@@ -1,8 +1,8 @@
-baseURL = "/docs/"
+baseURL = "https://otto.zenly.xyz/docs/"
 
 languageCode = "en-us"
 DefaultContentLanguage = "en"
-title = "otto"
+title = "ʘttʘ"
 theme = "docdock"
 pygmentsCodeFences = true
 pygmentsStyle = "monokailight"
@@ -43,6 +43,6 @@ weight = 12
 
 
 [[menu.shortcuts]]
-name = "<i class='fa fa-play-circle'></i> <label>Run otto</label>"
+name = "<i class='fa fa-play-circle'></i> <label>Run ʘttʘ</label>"
 url = "https://otto.zenly.xyz"
 weight = 11
