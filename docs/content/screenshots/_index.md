@@ -1,7 +1,6 @@
 +++
 title = "Screenshots"
 description = "otto in action"
-pre ="<i class='fa fa-camera'></i> "
 +++
 
 

@@ -30,12 +30,12 @@ The interface reads [discovery](https://www.home-assistant.io/docs/mqtt/discover
 
 For example, suppose we configure ʘttʘ to use a "discover prefix" of "homeassistant", and we publish a retained message like this:
 
-* topic: `homeassistant/switch/sprinkler/config`
-* payload: `{"name": "Sprinkler system", "state_topic": "homeassistant/switch/sprinkler/state", "command_topic": "homeassistant/switch/sprinkler/set"}`
+* topic: __homeassistant/switch/sprinkler/config__
+* payload: __{"name": "Sprinkler system", "state_topic": "homeassistant/switch/sprinkler/state", "command_topic": "homeassistant/switch/sprinkler/set"}__
 
-Clicking on the web interface button to turn the sprinkler on will send a message on topic `homeassistant/switch/sprinkler/set` with a payload of `ON`
+Clicking on the web interface button to turn the sprinkler on will send a message on topic __homeassistant/switch/sprinkler/set__ with a payload of __ON__
 
-Once the sprinkler has been turned on, whatever is controlling it is expected to set `homeassistant/switch/sprinkler/state` to `ON` and set the retain flag on that messag
+Once the sprinkler has been turned on, whatever is controlling it is expected to set __homeassistant/switch/sprinkler/state__ to __ON__ and set the retain flag on that message.
 
 Likewise for turning our example sprinkler off.
 
