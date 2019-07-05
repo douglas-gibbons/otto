@@ -1,11 +1,5 @@
 # Otto
 
-Otto is a simple web application to control switches and view sensor output using MQTT over websockets. Connection settings are configured through the web interface, and stored in the browser's [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API).
-
-There are also features for more general publish/subscribe of MQTT topics.
-
-![screenshot](https://raw.githubusercontent.com/douglas-gibbons/otto/master/screenshot.png)
-
 ## Requirements
 
 * [MQTT server with websockets enabled](http://www.steves-internet-guide.com/mqtt-websockets/)
@@ -24,23 +18,6 @@ If you want to connect to an MQTT service over unencryted websockets, you'll nee
 docker run --rm -p 8080:80 dougg/otto
 ```
 
-## Device Configuration and Messages
-
-The interface reads [discovery](https://www.home-assistant.io/docs/mqtt/discovery/) messages from the MQTT broker and uses these to configure what devices to display and control.
-
-For example, suppose we configure otto to use a "discover prefix" of "homeassistant", and we publish a retained message like this:
-
-* topic: `homeassistant/switch/sprinkler/config`
-* payload: `{"name": "Sprinkler system", "state_topic": "homeassistant/switch/sprinkler/state", "command_topic": "homeassistant/switch/sprinkler/set"}`
-
-Clicking on the web interface button to turn the sprinkler on will send a message on topic `homeassistant/switch/sprinkler/set` with a payload of `ON`
-
-Once the sprinkler has been turned on, whatever is controlling it is expected to set `homeassistant/switch/sprinkler/state` to `ON` and set the retain flag on that messag
-
-Likewise for turning our example sprinkler off.
-
-Use of "set" and "state" messages is compatible with what [Home Assistant](https://www.home-assistant.io/components/switch.mqtt/) expects.
-
 ## Development Environment
 
 ### The Docker Way
@@ -56,3 +33,7 @@ npm start
 ```
 
 Navigate to: http://localhost:4200/
+
+# License
+
+[MIT](https://github.com/douglas-gibbons/otto/blob/master/LICENSE)
