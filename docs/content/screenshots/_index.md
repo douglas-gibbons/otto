@@ -1,6 +1,6 @@
 +++
 title = "Screenshots"
-description = "otto in action"
+description = "ʘttʘ in action"
 +++
 
 
