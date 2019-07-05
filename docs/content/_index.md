@@ -1,10 +1,25 @@
++++
+title = "otto"
+description = "otto homepage"
++++
+
+
 # MQTT Control Panel
 
 Otto is a simple web application to control switches and view sensor output using MQTT over websockets. Connection settings are configured through the web interface, and stored in the browser's [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API).
 
 There are also features for more general publish/subscribe of MQTT topics.
 
-![screenshot](screenshot.png)
+## Requirements
+
+* [MQTT server with websockets enabled](http://www.steves-internet-guide.com/mqtt-websockets/)
+* Some sort of service that controls the switches (see switch topics below)
+* Retained topics for device discovery. See [home assistant documentation](https://www.home-assistant.io/docs/mqtt/discovery/) for format of auto discovery messages.
+
+
+## Running Otto
+
+Just navigate to __[https://otto.zenly.xyz/](https://otto.zenly.xyz/)__.
 
 
 ## Device Configuration and Messages
