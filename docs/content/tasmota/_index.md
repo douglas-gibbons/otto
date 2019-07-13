@@ -9,13 +9,19 @@ The [Tasmota](https://github.com/arendst/Sonoff-Tasmota/wiki) project provides o
 
 From the device's web page, set up MQTT host and user credentials for your MQTT server
 
-Also set the MQTT topic name. This should start with the "Discovery Prefix" that's configured in ʘttʘ, followed by a unique name. For example, for a "Discover Prefix" in ʘttʘ of "homeassistant", an MQTT topic name might be homeassistant/sonoff1
+Also set the MQTT topic name and full topic.
+
+The topic name should start with the "Discovery Prefix" that's configured in ʘttʘ, followed by a unique name. For example, for a "Discover Prefix" in ʘttʘ of "homeassistant", an MQTT topic name might be homeassistant/sonoff1
+
+The full topic should be `%topic%/%prefix%/`
 
 ![screenshot](tasmota-screenshot.png)
+
 
 #### Retained Messages
 
 ʘttʘ uses retained messages to check the state of devices. Go into the console screen on the device's website, type in `PowerRetain 1`, then press Enter
+
 
 #### Create a Config Message for ʘttʘ
 
