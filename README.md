@@ -1,4 +1,4 @@
-## <center>ʘttʘ<c/enter>
+## <center>ʘttʘ<center>
 <center>__MQTT Control Panel__</center>
 
 ----------------------------
