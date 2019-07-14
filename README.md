@@ -1,5 +1,5 @@
 ## <center>ʘttʘ<center>
-<center>__MQTT Control Panel__</center>
+__MQTT Control Panel__
 
 ----------------------------
 
