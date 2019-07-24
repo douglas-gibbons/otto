@@ -1,6 +1,7 @@
 +++
 title = "Using Tasmota Devices"
 description = "Connecting Tasmota Devices"
+weight = 40
 +++
 
 The [Tasmota](https://github.com/arendst/Sonoff-Tasmota/wiki) project provides open source hardware for a number of devices. Once you have a Tasmota device up and running on your WiFI network it can be set up to run with ʘttʘ:
