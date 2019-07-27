@@ -20,7 +20,7 @@ There is no need to install ʘttʘ itself, as it is freely available at [otto.ze
 
 First, navigate to the [identity](identity) tab and enter details of your MQTT server.
 
-Now you'll need to add retained messages to inform ʘttʘ about topics it can use to read and control devices. See the [discovery](discovery) page.
+Now you'll need to add retained messages to inform ʘttʘ about topics it can use to read and control devices. See the [discovery](/docs/discovery/) page.
 
 ## Advanced Use Cases
 
