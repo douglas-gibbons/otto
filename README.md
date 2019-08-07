@@ -7,24 +7,13 @@ User documentation can be found at [otto.zenly.xyz/docs](https://otto.zenly.xyz/
 
 ## Running ʘttʘ
 
-ʘttʘ is hosted for all to use at __[https://otto.zenly.xyz/](https://otto.zenly.xyz/)__.
+ʘttʘ is free to use at __[https://otto.zenly.xyz/](https://otto.zenly.xyz/)__.
 
 ### Development Environment
 
 #### The Docker Way
 
 Run `make up logs` to bring ʘttʘ up,then point a browser at http://localhost:4200/
-
-#### The Node Way
-
-```
-npm update
-npm install
-npm start
-```
-
-Navigate to: http://localhost:4200/
-
 
 ### Building and Running The Production Image
 
