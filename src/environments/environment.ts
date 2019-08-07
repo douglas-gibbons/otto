@@ -5,8 +5,6 @@
 import { IMqttServiceOptions } from 'ngx-mqtt';
 import { Guid } from "guid-typescript";
 
-// import jsonDevices from './devices.json';
-
 export const environment = {
   production: false,
 };
@@ -33,5 +31,5 @@ export const mqttSettings: IMqttServiceOptions = {
 };
 
 export const deviceSettings = {
-  prefix: localStorage.getItem('device.prefix') || 'homeassistant',
+  prefix: localStorage.getItem('device.prefix') || 'otto',
 };

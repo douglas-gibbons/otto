@@ -18,7 +18,7 @@ RUN mv node_modules clean_node_modules
 COPY . .
 RUN rm -Rf node_modules && mv clean_node_modules node_modules
 # Build
-RUN npm run build
+RUN npm run build-prod
 
 # Put it all together
 FROM nginx:1.13.12-alpine

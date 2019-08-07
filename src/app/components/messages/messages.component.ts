@@ -12,7 +12,7 @@ export class MessagesComponent implements OnInit {
 
   constructor(
     private mqttService: MqttService,
-    private messageService: MessageService,
+    public messageService: MessageService,
   ) { }
 
   ngOnInit() {

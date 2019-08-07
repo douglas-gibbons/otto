@@ -7,18 +7,15 @@ User documentation can be found at [otto.zenly.xyz/docs](https://otto.zenly.xyz/
 
 ## Running ʘttʘ
 
-```
-docker run --rm -p 8080:80 dougg/otto
-```
-...or navigate to __[https://otto.zenly.xyz/](https://otto.zenly.xyz/)__.
+ʘttʘ is hosted for all to use at __[https://otto.zenly.xyz/](https://otto.zenly.xyz/)__.
 
-## Development Environment
+### Development Environment
 
-### The Docker Way
+#### The Docker Way
 
-Run `make up logs` to bring ʘttʘ up and point a browser to http://localhost:4200/
+Run `make up logs` to bring ʘttʘ up,then point a browser at http://localhost:4200/
 
-### The Node Way
+#### The Node Way
 
 ```
 npm update
@@ -28,6 +25,17 @@ npm start
 
 Navigate to: http://localhost:4200/
 
+
+### Building and Running The Production Image
+
+```
+docker build . --tag=otto
+docker run --rm -p 8080:80 otto
+```
+
+Navigate to: http://localhost:8080/
+
+
 # License
 
-[MIT](https://github.com/douglas-gibbons/otto/blob/master/LICENSE)
+Copyright [MIT License](https://github.com/douglas-gibbons/otto/blob/master/LICENSE)
