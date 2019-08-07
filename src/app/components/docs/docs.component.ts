@@ -9,7 +9,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class DocsComponent implements OnInit {
 
-  public markdownSource = 'assets/docs/_index.md';
+  public markdownSource = 'assets/docs/index.md';
   private sub: any;
 
   constructor(private route: ActivatedRoute) {
