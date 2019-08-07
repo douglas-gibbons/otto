@@ -1,9 +1,3 @@
-+++
-title = "Quickstart"
-description = "Getting up and running with ʘttʘ"
-weight = 10
-+++
-
 ## Prerequisites
 
 1. [MQTT server with secure websockets enabled](http://www.steves-internet-guide.com/mqtt-websockets/)

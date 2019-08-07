@@ -15,7 +15,7 @@
       <a class="dropdown-item" routerLinkActive="is-active" (click)="toggleNavbar()" routerLink="/control">Control</a>
       <a class="dropdown-item" routerLinkActive="is-active" (click)="toggleNavbar()" routerLink="/subscribe">Subscribe</a>
       <a class="dropdown-item" routerLinkActive="is-active" (click)="toggleNavbar()" routerLink="/publish">Publish</a>
-      <a class="dropdown-item" href="/docs" (click)="toggleNavbar()" target="ottodocs">Help</a>
+      <a class="dropdown-item" routerLinkActive="is-active" (click)="toggleNavbar()" routerLink="/docs">Documentation</a>
     </div>
   </div>
 
@@ -28,6 +28,6 @@
     <li routerLinkActive="is-active"><a routerLink="/control">Control</a></li>
     <li routerLinkActive="is-active"><a routerLink="/subscribe">Subscribe</a></li>
     <li routerLinkActive="is-active"><a routerLink="/publish">Publish</a></li>
-    <li><a href="/docs" target="docs">Help</a></li>
+    <li routerLinkActive="is-active"><a routerLink="/docs">Documentation</a></li>
   </ul>
 </div>

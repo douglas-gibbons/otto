@@ -1,10 +1,3 @@
-+++
-title = "Connecting to Shiftr.io"
-description = "Connecting to Shiftr.io"
-weight = 60
-+++
-
-## Connecting to Shiftr.io
 
 [shiftr.io](https://shiftr.io/) provides an MQTT broker that you can sign up to and use.
 

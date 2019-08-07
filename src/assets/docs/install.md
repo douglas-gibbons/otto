@@ -1,9 +1,3 @@
-+++
-title = "Installing"
-description = "Installing ʘttʘ"
-weight = 20
-+++
-
 ## Running ʘttʘ
 
 Just navigate to __[https://otto.zenly.xyz/](https://otto.zenly.xyz/)__.

@@ -1,9 +1,3 @@
-+++
-title = "Using Tasmota Devices"
-description = "Connecting Tasmota Devices"
-weight = 50
-+++
-
 The [Tasmota](https://github.com/arendst/Sonoff-Tasmota/wiki) project provides open source hardware for IoT devices. Once you have a Tasmota device up and running on your WiFI network it can be set up to run with ʘttʘ:
 
 #### Setting up the device
@@ -16,7 +10,7 @@ The [Tasmota](https://github.com/arendst/Sonoff-Tasmota/wiki) project provides o
 1. ʘttʘ uses retained messages, so click on "Console", type in `PowerRetain 1` then press Enter to enable retained messages
 1. Now you need to create a configuration message on your MQTT broker to tell ʘttʘ all about your device. See the section below
 
-![screenshot](tasmota-screenshot.png)
+![screenshot](/assets/docs/images/tasmota-screenshot.png)
 
 
 #### Creating a Config Message for ʘttʘ
@@ -43,11 +37,11 @@ Note that the "name" field is the text displayed in ʘttʘ. It can be whatever m
 
 ʘttʘ's "Publish" panel can be used to publish this message, like this:
 
-![screenshot](tasmota-otto-config.png)
+![screenshot](/assets/docs/images/tasmota-otto-config.png)
 
 
 #### Testing it out
 
 Refresh the ʘttʘ website and you should now see the device show up in ʘttʘ's "Contol" panel, all ready to use.
 
-![screenshot](tasmota-otto-switch.png)
+![screenshot](/assets/docs/images/tasmota-otto-switch.png)

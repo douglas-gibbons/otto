@@ -1,7 +1,4 @@
-+++
-title = "Device discovery"
-weight = 45
-+++
+## Device Discovery
 
 * A complete example of discovery messages can be found on the [Connecting to Shiftr.io](/docs/shiftr/) page.
 * Also see [home assistant documentation](https://www.home-assistant.io/docs/mqtt/discovery/) for format of auto discovery messages.
