@@ -11,9 +11,8 @@
         <p *ngIf="device.type == 'switch'">
           <a class="button is-left" (click)="action(device)">
             <span [ngClass]="{'has-text-danger': device.isOn(), 'has-text-grey': ! device.isOn() }">
-
-              <fa-icon icon="power-off" *ngIf="! device.isLoading"></fa-icon>
-              <fa-icon [icon]="['fas', 'spinner']" [pulse]="true" *ngIf="device.isLoading"></fa-icon>
+              <i class="fas fa-power-off" *ngIf="! device.isLoading"></i>
+              <i class="fas fa-spinner fa-spin" *ngIf="device.isLoading"></i>
             </span>
             &nbsp; {{device.name}}
           </a>

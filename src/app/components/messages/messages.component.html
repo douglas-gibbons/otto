@@ -4,9 +4,9 @@
 
       <ng-container *ngFor='let message of messageService.messages'>
         <span class="has-text-{{ message.levelString() }}">
-          <fa-icon icon="{{ message.levelIcon() }}"></fa-icon>
+          <i class="{{ message.levelIcon() }}"></i>
         </span>
-        {{message.text}}
+        &nbsp; {{message.text}}
         <br />
       </ng-container>
     </div>
