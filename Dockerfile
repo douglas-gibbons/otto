@@ -1,6 +1,13 @@
 # Build the app
 FROM node:10.16.0-alpine as node
+
+
 RUN apk add --no-cache git
+
+# For building node-sass on arm
+RUN apk add --no-cache python2 make g++
+RUN npm install node-sass
+
 WORKDIR /code
 # NPM packages
 COPY package*.json ./
