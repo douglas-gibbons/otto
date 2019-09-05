@@ -3,7 +3,7 @@
 
 It also provides a quick and easy way to try it out.
 
-Go to the [identity panel](https://otto.zenly.xyz/identity) in ʘttʘ, and enter the following information:
+Go to the [configuration panel](https://otto.zenly.xyz/identity) in ʘttʘ, and enter the following information:
 
 
 * Hostname: **broker.shiftr.io**
