@@ -67,4 +67,8 @@ remote_password CHANGE_ME
 remote_username CHANGE_ME
 topic homeassistant/# out 1
 topic homeassistant/# in 1
+topic stat/# out 1
+topic stat/# in 1
+topic cmnd/# out 1
+topic cmnd/# in 1
 ```
