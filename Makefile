@@ -7,7 +7,7 @@ help:  ## Display this help
 build: ## bring the dev stack up
 	docker-compose build
 
-up: ## bring the dev stack up
+up: ## bring the dev stack up, listening on http://localhost:4200
 	docker-compose up -d
 
 logs: ## Docker logs
