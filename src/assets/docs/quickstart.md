@@ -1,6 +1,6 @@
 ## Prerequisites
 
-1. [MQTT server with secure websockets enabled](http://www.steves-internet-guide.com/mqtt-websockets/)
+1. [MQTT broker with secure websockets enabled](http://www.steves-internet-guide.com/mqtt-websockets/)
 1. Some sort of device or sensor that's connected to your MQTT broker.
 
 There is no need to install ʘttʘ itself, as it is freely available at [otto.zenly.xyz](https://otto.zenly.xyz/).
@@ -9,10 +9,10 @@ There is no need to install ʘttʘ itself, as it is freely available at [otto.ze
 
 ʘttʘ gets its configuration from two places:
 
-1. The [identity tab](/identity), where you configure a connection to the MQTT broker. These settings are stored in your browser.
+1. The [configuration tab](/identity), where you configure a connection to the MQTT broker. These settings are stored in your browser.
 1. Retained messages from your MQTT broker.
 
-First, navigate to the [identity](identity) tab and enter details of your MQTT server.
+First, navigate to the [configuration](identity) tab and enter details of your MQTT server.
 
 Now you'll need to add retained messages to inform ʘttʘ about topics it can use to read and control devices. See the [discovery](/docs/discovery/) page.
 
