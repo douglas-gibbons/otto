@@ -87,10 +87,11 @@ export class DeviceService {
 
     let configTopic = deviceSettings.prefix + '/+/+/config';
     let subs = this.mqttService.observeRetained(configTopic).subscribe((message: IMqttMessage) => {
-      if (message.payload == "")
+      let payloadString = message.payload.toString()
+      if (payloadString == "")
         return;
 
-      let payload = JSON.parse(message.payload.toString());
+      let payload = JSON.parse(payloadString);
       let device = new Device();
       device.name = payload.name;
       device.stateTopic = payload.state_topic;
@@ -99,7 +100,7 @@ export class DeviceService {
       device.jsonPath = payload.json_path;
       this.pushDevice(device);
       this.subscribeDevice(device);
-      
+
     });
     this.subscriptions.push(subs);
   }

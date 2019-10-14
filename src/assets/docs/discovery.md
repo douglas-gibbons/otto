@@ -25,6 +25,8 @@ Suppose we have a temperature sensor, publishing temperature to the topic "homea
 * topic: `homeassistant/sensor/temperature/config`
 * payload: `{"name": "Temperature", "unit_of_measurement": "°C", "state_topic": "homeassistant/sensor/temperature"}`
 
+Sometimes sensors publish json data as their payload. Simple json paths can be given as part of the configuration for this. See [this example](/docs/tasmota-pow2).
+
 ### Publishing Retained Messages
 
 If you already have ʘttʘ connected to your MQTT server, the quickest way of publishing these messages is from the [publish tab](/publish).
