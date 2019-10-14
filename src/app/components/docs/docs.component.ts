@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({

@@ -1,14 +1,17 @@
 The Sonoff Pow R2 not only acts as a power switch, but can also monitor power consumption. This is an example of how to set it up with ʘttʘ, to monitoring power consumption for a car charging point.
 
-![charge, 300px](/assets/docs/images/car-charge.jpg)
+<img src="/assets/docs/images/car-charge.jpg" width="200" />
 
 #### Prerequisites
 
 * ʘttʘ controls devices using MQTT over websockets, so you'll need an [MQTT broker with secure websockets enabled](http://www.steves-internet-guide.com/mqtt-websockets/).
-* You'll need a Sonoff Pow 2, correctly wired in to the charging output
-* Flash your Sonoff Pow 2 with [Tasmota](https://github.com/arendst/Sonoff-Tasmota/wiki/Flashing)
-* Configure [Wi-Fi access](https://github.com/arendst/Sonoff-Tasmota/wiki/Initial-Configuration#configure-wi-fi)
+* The Sonoff Pow R2, should be correctly wired in between the mains power and the charger unit
+* The device should be flashed with [Tasmota](https://github.com/arendst/Sonoff-Tasmota/wiki/Flashing) firmware
+* [Wi-Fi access](https://github.com/arendst/Sonoff-Tasmota/wiki/Initial-Configuration#configure-wi-fi) should be configured
 * There is usually no need to install ʘttʘ itself, as it is freely available at [otto.zenly.xyz](https://otto.zenly.xyz/).
+
+<img src="/assets/docs/images/sonoff-pow2.jpg" width="200" />
+
 
 ### Setting Up The Device
 
@@ -18,6 +21,10 @@ The Sonoff Pow R2 not only acts as a power switch, but can also monitor power co
 1. Set up the Host, Port, Client, User and Password of your MQTT broker
 1. Change "Topic" to be a unique device name. For example "charger", in this case
 1. Click "save" and let the device restart
+
+#### Module Type Configuration
+
+On the Tasmota web interface select "Configuration Module" and set the module type to "Sonoff Pow R2"
 
 #### Console Options
 
@@ -35,7 +42,7 @@ TIMEDST 0,2,3,1,2,-420
 TIMESTD 0,1,11,1,2,-480
 ```
 
-The Sonoff POW 2 should now be publishing messages to your MQTT broker.
+The Sonoff Pow R2 should now be publishing messages to your MQTT broker.
 
 ### Setting ʘttʘ
 
@@ -43,19 +50,19 @@ The Sonoff POW 2 should now be publishing messages to your MQTT broker.
 
 First configure ʘttʘ to access your MQTT broker. Enter your settings on the [configuration page](https://otto.zenly.xyz/identity). The settings will be saved in your browser's local storage.
 
-The "Discovery Prefix" box is the first part of the configuration message topic that you'll use. It can be whatever you choose, but for this example, set it to "otto".
+The "Discovery Prefix" box is the first part of the configuration message topic that you'll use. It's what ʘttʘ uses to find it's configuration messages.  In this case; we're set it to "ʘttʘ".
 
 Press "Connect" and make sure that you can connect to your MQTT broker.
 
 #### Device Configuration Messages
 
-Now that you're connected to your broker, we need to publish some messages to let ʘttʘ discover your device. The [publish screen](https://otto.zenly.xyz/publish) in ʘttʘ can be used for this.
+Now that you're connected to your broker, publish some messages to let ʘttʘ discover your device. The [publish screen](https://otto.zenly.xyz/publish) in ʘttʘ can be used for this.
 
-Publish the following messages __making sure that you enable "retain" to store the messages__.
+Publish the following messages making sure that you __enable "retain"__ to store the messages.
 
 This message tells ʘttʘ that you have a switch, that can be controlled by the topic "cmnd/charger/POWER". Note, that your state and command topics in the configuration will be different if you did not name your device "charger". You can see messages published in the console window of your device to check.
 
-* Topic: otto/switch/charger/config
+* Topic: `otto/switch/charger/config`
 * Payload:
 
 ```
@@ -66,12 +73,12 @@ This message tells ʘttʘ that you have a switch, that can be controlled by the 
 }
 ```
 
-These three messages tell ʘttʘ that the device is also a sensor with several readings that we're interested in:
+The following three messages should also be published to tell ʘttʘ that the device is also a sensor with several readings that we're interested in:
 
+The current:
 
-* Topic: otto/sensor/charger_current/config
+* Topic: `otto/sensor/charger_current/config`
 * Payload:
-
 ```
 {
   "name": "Charger current",
@@ -81,10 +88,10 @@ These three messages tell ʘttʘ that the device is also a sensor with several r
 }
 ```
 
+Total power usage from yesterday (this is why it is important to set the clock to the correct timezone):
 
-* Topic: otto/sensor/charger_yesterday/config
+* Topic: `otto/sensor/charger_yesterday/config`
 * Payload:
-
 ```
 {
   "name": "Charger energy usage yesterday",
@@ -94,9 +101,10 @@ These three messages tell ʘttʘ that the device is also a sensor with several r
 }
 ```
 
-* Topic: otto/sensor/charger_today/config
-* Payload:
+Total power usate so far today:
 
+* Topic: `otto/sensor/charger_today/config`
+* Payload:
 ```
 {
   "name": "Charger energy usage today",

@@ -51,3 +51,5 @@ _For details of the MQTT message flow for Tasmota devices, see the [Sonoff-Tasmo
 Refresh the ʘttʘ control panel and you should now see the device show up in ʘttʘ's "Contol" panel, all ready to use.
 
 ![screenshot](/assets/docs/images/tasmota-otto-switch.png)
+
+You can also configure ʘttʘ to take sensor readings from Tasmota devices. See [this example](/docs/tasmota-pow2).
