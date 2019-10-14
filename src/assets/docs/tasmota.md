@@ -19,7 +19,7 @@ Once you have a Tasmota device up and running on your WiFI network it can be con
 
 ![screenshot](/assets/docs/images/tasmota-screenshot.png)
 
-Now you need to create a configuration message on your MQTT broker to tell ʘttʘ all about your device. See the section below.
+Your device should now be sending and receiving messages to and from your MQTT broker. Now you need to create a configuration message on your MQTT broker to tell ʘttʘ all about your device.
 
 #### Creating a Config Message for ʘttʘ
 

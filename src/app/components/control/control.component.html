@@ -8,7 +8,7 @@
     <div class="content">
 
       <ng-container *ngFor="let device of devices">
-        <p *ngIf="device.type == 'switch'">
+        <p *ngIf="device.commandTopic">
           <a class="button is-left" (click)="action(device)">
             <span [ngClass]="{'has-text-danger': device.isOn(), 'has-text-grey': ! device.isOn() }">
               <i class="fas fa-power-off" *ngIf="! device.isLoading"></i>
@@ -34,13 +34,13 @@
   </header>
   <div class="card-content">
     <div class="content">
+      <!-- Text outputs -->
       <ul class="sensor">
         <ng-container *ngFor="let device of devices">
-          <li *ngIf="device.type == 'sensor'">
+          <li *ngIf="! device.commandTopic">
             {{ device.name }} : {{ device.state}} {{ device.unitOfMeasurement }}
         </ng-container>
       </ul>
-
     </div>
   </div>
   <footer class="card-footer">

@@ -8,15 +8,13 @@ import { MessageService, Level } from './message.service';
 export class Device {
   constructor() { }
   public name: string;
-  public object: string;
-  public type: string;
   public configTopic: string;
   public stateTopic: string;
   public commandTopic: string;
   public unitOfMeasurement: string;
+  public jsonPath: string; // Json path to required measurement
   public state: string;
   public isLoading: boolean = false;
-
   public isOn() {
     return this.state == "ON";
   }
@@ -89,24 +87,19 @@ export class DeviceService {
 
     let configTopic = deviceSettings.prefix + '/+/+/config';
     let subs = this.mqttService.observeRetained(configTopic).subscribe((message: IMqttMessage) => {
+      if (message.payload == "")
+        return;
 
-      let discoveryTopic = message.topic.split('/');
-      let prefix = discoveryTopic[0];
-      let component = discoveryTopic[1];
-      let object = discoveryTopic[2];
       let payload = JSON.parse(message.payload.toString());
-
       let device = new Device();
-      device.type = component;
-      device.object = object;
       device.name = payload.name;
       device.stateTopic = payload.state_topic;
       device.commandTopic = payload.command_topic;
       device.unitOfMeasurement = payload.unit_of_measurement;
-
+      device.jsonPath = payload.json_path;
       this.pushDevice(device);
       this.subscribeDevice(device);
-
+      
     });
     this.subscriptions.push(subs);
   }
@@ -114,7 +107,7 @@ export class DeviceService {
   // Adds a device to the list of devices, replacing it if it's already in the array
   private pushDevice(device) {
     for (let i = 0; i < this.devices.length; i++) {
-      if (this.devices[i].stateTopic == device.stateTopic) {
+      if (this.devices[i].stateTopic == device.stateTopic && device.jsonPath == this.devices[i].jsonPath) {
         this.devices[i] = device;
         return
       }
@@ -127,6 +120,10 @@ export class DeviceService {
       let subs = this.mqttService.observeRetained(device.stateTopic).subscribe(
         (message: IMqttMessage) => {
           device.state = message.payload.toString();
+
+          if (this.isJson(device.state) && device.jsonPath) {
+            device.state = this.fromJsonPath(device.jsonPath, device.state);
+          }
           device.isLoading = false;
         },
         e => {
@@ -135,6 +132,37 @@ export class DeviceService {
       );
       this.subscriptions.push(subs);
     }
+  }
+
+  // Get from a json path, represented as a string
+  private fromJsonPath(path: string, text: string): string {
+    let obj = JSON.parse(text)
+
+    let keys = path.split('.');
+    for (let key of keys) {
+
+      // Failed to find the key
+      if (!(key in obj)) {
+        this.messageService.message(Level.Warning, "Could not find value for key '" + key + "' in payload");
+        return "?";
+      }
+
+      obj = obj[key]
+    }
+    return obj;
+  }
+
+  // Check if given text is a JSON object
+  private isJson(text: string): boolean {
+    try {
+      text = JSON.parse(text);
+    } catch (e) {
+      return false;
+    }
+    if (typeof text === "object" && text !== null) {
+      return true;
+    }
+    return false;
   }
 
   public publish(topic: string, message: string, retain: boolean): Observable<void> {
