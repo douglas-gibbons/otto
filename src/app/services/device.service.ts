@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subscription } from 'rxjs';
-import { MqttService, IMqttMessage, MqttConnectionState } from 'ngx-mqtt';
+import { MqttService, IMqttMessage, MqttModule, IMqttServiceOptions } from 'ngx-mqtt';
 import { mqttSettings, deviceSettings } from '../../environments/environment';
 import { MessageService, Level } from './message.service';
 
@@ -24,6 +24,7 @@ export class Device {
 @Injectable({
   providedIn: 'root'
 })
+
 export class DeviceService {
 
   private devices: Device[] = [];

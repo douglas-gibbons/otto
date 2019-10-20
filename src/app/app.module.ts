@@ -15,6 +15,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { NgModule } from '@angular/core';
 import { PublishComponent } from './components/publish/publish.component';
 import { SubscribeComponent } from './components/subscribe/subscribe.component';
+import { MqttService } from 'ngx-mqtt';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { SubscribeComponent } from './components/subscribe/subscribe.component';
     MarkdownModule.forRoot({ loader: HttpClient }),
     MqttModule.forRoot(mqttServiceOptions),
   ],
-  providers: [],
+  providers: [MqttService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

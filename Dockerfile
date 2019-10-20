@@ -1,5 +1,5 @@
 # Build the app
-FROM node:10.16.0-alpine as node
+FROM node:10.16.3-alpine as node
 
 
 RUN apk add --no-cache git
@@ -19,6 +19,6 @@ RUN rm -Rf node_modules && mv clean_node_modules node_modules
 RUN npm run build-prod
 
 # Put it all together
-FROM nginx:1.13.12-alpine
+FROM nginx:1.17.4-alpine
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=node /code/dist/otto /usr/share/nginx/html
