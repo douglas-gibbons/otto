@@ -25,7 +25,7 @@ Suppose we have a temperature sensor, publishing temperature to the topic "homea
 * topic: `homeassistant/sensor/temperature/config`
 * payload: `{"name": "Temperature", "unit_of_measurement": "°C", "state_topic": "homeassistant/sensor/temperature"}`
 
-Sometimes sensors publish json data as their payload. Simple json paths can be given as part of the configuration for this. See [this example](/docs/tasmota-pow2).
+Sometimes sensors publish json data as their payload. Simple json paths can be given as part of the configuration for this. See [this example](https://github.com/douglas-gibbons/otto/wiki/pow2).
 
 ### Publishing Retained Messages
 
