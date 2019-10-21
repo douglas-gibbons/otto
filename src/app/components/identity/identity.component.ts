@@ -6,7 +6,7 @@ import { DeviceService } from '../../services/device.service'
 @Component({
   selector: 'app-identity',
   templateUrl: './identity.component.html',
-  styleUrls: ['./identity.component.scss']
+  styleUrls: ['./identity.component.css']
 })
 export class IdentityComponent {
 

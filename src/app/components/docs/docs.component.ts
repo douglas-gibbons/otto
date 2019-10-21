@@ -4,7 +4,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 @Component({
   selector: 'app-docs',
   templateUrl: './docs.component.html',
-  styleUrls: ['./docs.component.scss']
+  styleUrls: ['./docs.component.css']
 })
 export class DocsComponent implements OnInit {
 
