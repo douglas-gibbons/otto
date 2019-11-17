@@ -25,30 +25,7 @@ Suppose we have a temperature sensor, publishing temperature to the topic "homea
 * topic: `homeassistant/sensor/temperature/config`
 * payload: `{"name": "Temperature", "unit_of_measurement": "°C", "state_topic": "homeassistant/sensor/temperature"}`
 
-Sometimes sensors publish json data as their payload. Simple json paths can be given as part of the configuration for this, using the "json_path" key.
-
-For example, with a device producing a payload such as this to tele/charger/SENSOR:
-
-```
-{
-  "ENERGY": {
-    "Today":12.207
-  }
-}
-```
-
-A configuration payload might look like this:
-
-```
-{
-  "name": "Charger energy usage today",
-  "state_topic": "tele/charger/SENSOR",
-  "unit_of_measurement": "kWh",
-  "json_path": "ENERGY.Today"
-}
-```
-
-See [this more complete example](https://github.com/douglas-gibbons/otto/wiki/pow2).
+Sometimes sensors publish json data as their payload. Simple json paths can be given as part of the configuration for this. See [this example](https://github.com/douglas-gibbons/otto/wiki/pow2).
 
 ### Publishing Retained Messages
 
