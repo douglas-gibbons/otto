@@ -5,7 +5,7 @@ import { MessageService, Level } from '../../services/message.service';
 @Component({
   selector: 'app-publish',
   templateUrl: './publish.component.html',
-  styleUrls: ['./publish.component.css']
+  styleUrls: ['./publish.component.scss']
 })
 export class PublishComponent implements OnInit {
 

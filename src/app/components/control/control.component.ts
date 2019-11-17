@@ -5,7 +5,7 @@ import { DeviceService, Device } from '../../services/device.service'
 @Component({
   selector: 'app-control',
   templateUrl: './control.component.html',
-  styleUrls: ['./control.component.css']
+  styleUrls: ['./control.component.scss']
 })
 export class ControlComponent implements OnInit {
 
