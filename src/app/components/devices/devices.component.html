@@ -1,28 +1,268 @@
+<!-- device creation modal -->
+
+<div [className]="isModalActive? 'modal is-active' : 'is-hidden'">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+
+    <header class="modal-card-head">
+      <p class="modal-card-title">New Device</p>
+    </header>
+
+    <section class="modal-card-body">
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Name</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input class="input" (change)="modalChangeConfigTopic()" type="text" [(ngModel)]="newDevice.name">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Device type</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="select">
+              <select (change)="modalChangeConfigTopic()" [(ngModel)]="newDevice.component">
+                <option>sensor</option>
+                <option>switch</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Configuration Topic</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input class="input" type="text" disabled [(ngModel)]="newDevice.configTopic">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div [className]="newDevice.component == 'switch' ? 'field is-horizontal' : 'is-hidden'">
+        <div class="field-label is-normal">
+          <label class="label">Command Topic</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input class="input" type="text" placeholder="Set to the MQTT topic to control the device. Devices with blank command topics are assumed to be sensors" [(ngModel)]="newDevice.commandTopic">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">State Topic</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input class="input" type="text" [(ngModel)]="newDevice.stateTopic">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div [className]="newDevice.component == 'sensor' ? 'field is-horizontal' : 'is-hidden'">
+        <div class="field-label is-normal">
+          <label class="label">State Json Path</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input class="input" type="text" placeholder="Json path to measurement value within state message" [(ngModel)]="newDevice.jsonPath">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div [className]="newDevice.component == 'sensor' ? 'field is-horizontal' : 'is-hidden'">
+        <div class="field-label is-normal">
+          <label class="label">Unit of Measurement</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input class="input" type="text" [(ngModel)]="newDevice.unitOfMeasurement">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </section>
+    <footer class="modal-card-foot">
+      <button (click)="modalCancel()" class="button is-danger">Cancel</button>
+      <button (click)="modalSave()" [className]="newDevice.name != '' ? 'button is-success' : 'button is-disabled'">Create</button>
+    </footer>
+  </div>
+</div>
+
+
+
+<!-- Main content -->
+
 <div class="card">
   <header class="card-header">
     <p class="card-header-title">
-      Devices
+      Device Configuration
     </p>
   </header>
-
   <div class="card-content">
     <div class="content">
-
-      <ng-container *ngFor="let device of devices">
-        <ul>
-          <li>name: {{device.name}}</li>
-          <li>configTopic: {{device.configTopic}}</li>
-          <li>cmd: {{device.commandTopic}}</li>
-          <li>stat: {{device.stateTopic}}</li>
-          <li>units: {{device.unitOfMeasurement}}</li>
-          <li>jsonPath: {{device.jsonPath}}</li>
-          <li>state: {{device.state}}</li>
-        </ul>
-
-      </ng-container>
+      <p>
+        Device configurations are saved as retained MQTT messages
+      </p>
 
     </div>
   </div>
   <footer class="card-footer">
+    <button (click)="new()" class="button is-success">
+      New
+    </button>
   </footer>
 </div>
+
+<ng-container *ngFor="let device of devices">
+
+  <div class="card">
+    <header class="card-header">
+      <p class="card-header-title">
+        {{ device.name }}
+      </p>
+
+      <a class="card-header-icon card-toggle" (click)="expand(device)">
+        <i class="fa fa-angle-down"></i>
+      </a>
+
+    </header>
+
+    <div class="card-content" [className]="device.isExpanded ? '' : 'is-hidden'">
+      <div class="content">
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Name</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" [(ngModel)]="device.name">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Configuration Topic</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" disabled [(ngModel)]="device.configTopic">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Command Topic</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" placeholder="Set to the MQTT topic to control the device. Devices with blank command topics are assumed to be sensors" [(ngModel)]="device.commandTopic">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">State Topic</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" [(ngModel)]="device.stateTopic">
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">State Json Path</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" placeholder="Json path to measurement value within state message" [(ngModel)]="device.jsonPath">
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Unit of Measurement</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" [(ngModel)]="device.unitOfMeasurement">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Current state</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" disabled [(ngModel)]="device.state">
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <footer class="card-footer" [className]="device.isExpanded ? 'card-footer' : 'is-hidden'">
+
+      <button (click)="delete(device)" class="button is-danger">
+        Delete
+      </button>
+      <button (click)="save(device)" class="button is-success">
+        Save
+      </button>
+
+    </footer>
+  </div>
+
+</ng-container>

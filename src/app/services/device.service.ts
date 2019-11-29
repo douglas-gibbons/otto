@@ -15,6 +15,8 @@ export class Device {
   public jsonPath: string; // Json path to required measurement
   public state: string;
   public isLoading: boolean = false;
+  public isExpanded : boolean = false; // Viewing devices in devices component
+  public component: string; // device type; switch or sensor
   public isOn() {
     return this.state == "ON";
   }
@@ -109,6 +111,7 @@ export class DeviceService {
   private pushDevice(device) {
     for (let i = 0; i < this.devices.length; i++) {
       if (this.devices[i].stateTopic == device.stateTopic && device.jsonPath == this.devices[i].jsonPath) {
+        device.isExpanded = this.devices[i].isExpanded; // Retain expanded information
         this.devices[i] = device;
         return
       }
@@ -121,7 +124,6 @@ export class DeviceService {
       let subs = this.mqttService.observeRetained(device.stateTopic).subscribe(
         (message: IMqttMessage) => {
           device.state = message.payload.toString();
-
           if (this.isJson(device.state) && device.jsonPath) {
             device.state = this.fromJsonPath(device.jsonPath, device.state);
           }
@@ -135,7 +137,7 @@ export class DeviceService {
     }
   }
 
-  // Get from a json path, represented as a string
+  // Get reading from a json path, represented as a string
   private fromJsonPath(path: string, text: string): string {
     let obj = JSON.parse(text)
 
@@ -181,6 +183,36 @@ export class DeviceService {
   public turnOn(device) {
     device.isLoading = true;
     this.publish(device.commandTopic, "ON", false).subscribe();
+  }
+
+  public save(device) {
+    this.publish(device.configTopic, this.deviceToJson(device), true).subscribe(
+      () => this.messageService.temporaryMessage(Level.Info, "Saved \"" + device.name + "\"")
+    );
+  }
+  public delete(device) {
+    this.publish(device.configTopic, "", true).subscribe(
+      () => this.messageService.temporaryMessage(Level.Info, "Deleted \"" + device.name + "\"")
+    );
+
+    // Remove device from list of devices
+    for (let i = 0; i < this.devices.length; i++) {
+      if (this.devices[i].configTopic == device.configTopic) {
+        this.devices.splice(i,1);
+        return
+      }
+    }
+
+  }
+
+  private deviceToJson(device): string {
+    return JSON.stringify({
+      name: device.name,
+      state_topic: device.stateTopic,
+      command_topic: device.commandTopic,
+      unit_of_measurement: device.unitOfMeasurement,
+      json_path: device.jsonPath,
+    });
   }
 
 }
