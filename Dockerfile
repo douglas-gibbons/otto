@@ -1,5 +1,5 @@
 # Build the app
-FROM node:10.16.0-alpine as node
+FROM node:12.13.1-alpine as node
 
 
 RUN apk add --no-cache git

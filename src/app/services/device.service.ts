@@ -22,7 +22,7 @@ export class Device {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DeviceService {
 
@@ -41,7 +41,6 @@ export class DeviceService {
     } catch (e) {
       this.messageService.message(Level.Danger, e);
     }
-
   }
 
   private monitorMqttStatus() {

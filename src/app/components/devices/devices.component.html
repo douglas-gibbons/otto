@@ -1,0 +1,27 @@
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      Switches
+    </p>
+  </header>
+
+  <div class="card-content">
+    <div class="content">
+
+      <ng-container *ngFor="let device of devices">
+        <ul>
+          <li>{{device.name}}</li>
+          <li>{{device.configTopic}}</li>
+          <li>{{device.commandTopic}}</li>
+          <li>{{device.unitOfMeasurement}}</li>
+          <li>{{device.jsonPath}} (json path to required measurement)</li>
+          <li>{{device.state}} (is it on)</li>
+        </ul>
+
+      </ng-container>
+
+    </div>
+  </div>
+  <footer class="card-footer">
+  </footer>
+</div>
