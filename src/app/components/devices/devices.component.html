@@ -1,7 +1,7 @@
 <div class="card">
   <header class="card-header">
     <p class="card-header-title">
-      Switches
+      Devices
     </p>
   </header>
 
@@ -10,12 +10,13 @@
 
       <ng-container *ngFor="let device of devices">
         <ul>
-          <li>{{device.name}}</li>
-          <li>{{device.configTopic}}</li>
-          <li>{{device.commandTopic}}</li>
-          <li>{{device.unitOfMeasurement}}</li>
-          <li>{{device.jsonPath}} (json path to required measurement)</li>
-          <li>{{device.state}} (is it on)</li>
+          <li>name: {{device.name}}</li>
+          <li>configTopic: {{device.configTopic}}</li>
+          <li>cmd: {{device.commandTopic}}</li>
+          <li>stat: {{device.stateTopic}}</li>
+          <li>units: {{device.unitOfMeasurement}}</li>
+          <li>jsonPath: {{device.jsonPath}}</li>
+          <li>state: {{device.state}}</li>
         </ul>
 
       </ng-container>

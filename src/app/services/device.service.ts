@@ -93,6 +93,7 @@ export class DeviceService {
       let payload = JSON.parse(payloadString);
       let device = new Device();
       device.name = payload.name;
+      device.configTopic = message.topic.toString();
       device.stateTopic = payload.state_topic;
       device.commandTopic = payload.command_topic;
       device.unitOfMeasurement = payload.unit_of_measurement;
