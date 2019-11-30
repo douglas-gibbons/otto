@@ -1,3 +1,13 @@
+<!-- Delete cancellation -->
+<div class="card" *ngIf="deleting">
+  <div class="card-content">
+    <div class="content">
+      <button (click)="cancelDelete()" class="button is-warning">Cancel device deletion</button>
+    </div>
+  </div>
+</div>
+
+
 <!-- device creation modal -->
 
 <div [className]="isModalActive? 'modal is-active' : 'is-hidden'">
@@ -136,9 +146,11 @@
 
     </section>
     <footer class="modal-card-foot">
-      <button (click)="modalCancel()" class="button is-danger">Cancel</button>
-      <button *ngIf="isNewDevice"   (click)="modalSave()" [disabled]="editDevice.name ==''" class="button is-success">Create device</button>
+      <button (click)="modalCancel()" class="button is-warning">Cancel</button>
+      <button *ngIf="isNewDevice" (click)="modalSave()" [disabled]="editDevice.name ==''" class="button is-success">Create device</button>
+      <button *ngIf="! isNewDevice" (click)="modalDelete()" class="button is-danger button-delete">Delete</button>
       <button *ngIf="! isNewDevice" (click)="modalSave()" [disabled]="editDevice.name ==''" class="button is-success">Save changes</button>
+
     </footer>
   </div>
 </div>
@@ -174,7 +186,7 @@
     </div>
   </div>
   <footer class="card-footer">
-      <button (click)="new('switch')" class="button is-success is-small">New switch</button>
+    <button (click)="new('switch')" class="button is-success is-small">New switch</button>
   </footer>
 </div>
 
@@ -188,19 +200,19 @@
     <div class="content">
       <ng-container *ngFor="let device of devices">
 
-              <div class="buttons has-addons" *ngIf="device.component == 'sensor'">
-                <button class="button button-fill sensor-button" disabled>
-                  <i class="fa fa-tachometer-alt"></i>
-                  &nbsp; {{device.name}} &nbsp; {{ device.state}} {{ device.unitOfMeasurement }}
-                </button>
-                <button class="button" (click)="edit(device)">
-                  <i class="fa fa-wrench"></i>
-                </button>
-              </div>
+        <div class="buttons has-addons" *ngIf="device.component == 'sensor'">
+          <button class="button button-fill button-sensor" disabled>
+            <i class="fa fa-tachometer-alt"></i>
+            &nbsp; {{device.name}} &nbsp; {{ device.state}} {{ device.unitOfMeasurement }}
+          </button>
+          <button class="button" (click)="edit(device)">
+            <i class="fa fa-wrench"></i>
+          </button>
+        </div>
 
-            </ng-container>
+      </ng-container>
+    </div>
+    <footer class="card-footer">
+      <button (click)="new('sensor')" class="button is-success is-small">New sensor</button>
+    </footer>
   </div>
-  <footer class="card-footer">
-    <button (click)="new('sensor')" class="button is-success is-small">New sensor</button>
-  </footer>
-</div>

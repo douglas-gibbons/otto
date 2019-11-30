@@ -15,7 +15,10 @@ button:focus {outline:0 !important;}
   justify-content: flex-start;
 }
 
-.sensor-button {
+.button-delete {
+  float: right;
+}
+.button-sensor {
   background-color: #282f2f;
   border-color: #8c9b9d;
 }

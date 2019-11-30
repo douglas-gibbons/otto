@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DeviceService, Device } from '../../services/device.service'
 import { deviceSettings } from '../../../environments/environment';
+import { MessageService, Level } from '../../services/message.service';
 
 @Component({
   selector: 'app-devices',
@@ -13,9 +14,11 @@ export class DevicesComponent implements OnInit {
   public editDevice: Device;
   public isNewDevice: boolean = true; // True for creating device, false for editing an old one
   public isModalActive: boolean = false;
+  public deleting: boolean = false; // about to delete something
 
   constructor(
     private deviceService: DeviceService,
+    private messageService: MessageService,
   ) { }
 
   ngOnInit() {
@@ -48,6 +51,26 @@ export class DevicesComponent implements OnInit {
     return false;
   }
 
+  cancelDelete() {
+    this.deleting = false;
+  }
+  modalDelete() {
+    // TODO this will cancel all pending deletes upon deletion.
+    this.isModalActive = false;
+    this.deleting = true;
+
+    let t = this;
+    setTimeout(() => {
+      // Did we cancel the delete
+      if (t.deleting == false) {
+        t.messageService.temporaryMessage(Level.Info, "Deletion cancelled");
+      } else {
+        t.delete(t.editDevice);
+        t.deleting = false;
+      }
+    }, 5000);
+
+  }
   modalCancel() {
     this.isModalActive = false;
   }
