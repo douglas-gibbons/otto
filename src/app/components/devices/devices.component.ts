@@ -10,7 +10,8 @@ import { deviceSettings } from '../../../environments/environment';
 export class DevicesComponent implements OnInit {
 
   public devices: Device[];
-  public newDevice: Device;
+  public editDevice: Device;
+  public isNewDevice: boolnean = true; // True for creating device, false for editing an old one
   public isModalActive: boolean = false;
 
   constructor(
@@ -18,7 +19,7 @@ export class DevicesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.newDevice = new Device();
+    this.editDevice = new Device();
     this.devices = this.deviceService.getDevices();
   }
 
@@ -36,11 +37,12 @@ export class DevicesComponent implements OnInit {
     this.deviceService.delete(device);
   }
 
-  new() {
-    this.newDevice = new Device();
-    this.newDevice.name = "";
-    this.newDevice.component = "switch";
-    this.newDevice.configTopic = this.createConfigTopic(this.newDevice);
+  new(component: string) {
+    this.isNewDevice = true;
+    this.editDevice = new Device();
+    this.editDevice.name = "";
+    this.editDevice.component = component;
+    this.editDevice.configTopic = this.createConfigTopic(this.editDevice);
     this.isModalActive = true;
 
     return false;
@@ -50,11 +52,13 @@ export class DevicesComponent implements OnInit {
     this.isModalActive = false;
   }
   modalSave() {
-    this.save(this.newDevice);
+    this.save(this.editDevice);
     this.isModalActive = false;
   }
   modalChangeConfigTopic() {
-    this.newDevice.configTopic = this.createConfigTopic(this.newDevice);
+    if (this.isNewDevice == true) {
+      this.editDevice.configTopic = this.createConfigTopic(this.editDevice);
+    }
   }
 
   createConfigTopic(device: Device): string {
@@ -68,5 +72,11 @@ export class DevicesComponent implements OnInit {
     } else {
       this.deviceService.turnOn(device);
     }
+  }
+
+  edit(device) {
+    this.isNewDevice = false;
+    this.editDevice = device;
+    this.isModalActive = true;
   }
 }

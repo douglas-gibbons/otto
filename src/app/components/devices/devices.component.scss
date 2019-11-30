@@ -1,6 +1,23 @@
 .buttons {
   display: flex;
-  padding: 0.75rem;
+  margin-bottom: 0.2rem;
+}
+
+.button {
+  margin-bottom: 0.1rem;
+  list-style-type: none;
+}
+
+button:focus {outline:0 !important;}
+
+.button-fill {
+  flex: 1;
+  justify-content: flex-start;
+}
+
+.sensor-button {
+  background-color: #282f2f;
+  border-color: #8c9b9d;
 }
 
 .card-footer {
