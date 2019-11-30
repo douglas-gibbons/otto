@@ -11,7 +11,7 @@ export class DevicesComponent implements OnInit {
 
   public devices: Device[];
   public editDevice: Device;
-  public isNewDevice: boolnean = true; // True for creating device, false for editing an old one
+  public isNewDevice: boolean = true; // True for creating device, false for editing an old one
   public isModalActive: boolean = false;
 
   constructor(
