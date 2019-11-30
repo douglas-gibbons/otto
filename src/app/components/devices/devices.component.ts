@@ -11,7 +11,7 @@ import { MessageService, Level } from '../../services/message.service';
 export class DevicesComponent implements OnInit {
 
   public devices: Device[];
-  public editDevice: Device;
+  public editDevice = new Device();
   public isNewDevice: boolean = true; // True for creating device, false for editing an old one
   public isModalActive: boolean = false;
 
@@ -21,7 +21,6 @@ export class DevicesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.editDevice = new Device();
     this.devices = this.deviceService.getDevices();
   }
 
