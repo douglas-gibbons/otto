@@ -59,7 +59,7 @@ export class DevicesComponent implements OnInit {
       if (device.isDeleting != false) {
         this.deviceService.delete(device);
       }
-    }, 5000);
+    }, 8000);
 
   }
   modalCancel() {
