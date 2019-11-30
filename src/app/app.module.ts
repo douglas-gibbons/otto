@@ -1,7 +1,6 @@
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { ControlComponent } from './components/control/control.component';
 import { DocsComponent } from './components/docs/docs.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule } from '@angular/forms';
@@ -20,7 +19,6 @@ import { DevicesComponent } from './components/devices/devices.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ControlComponent,
     IdentityComponent,
     MessagesComponent,
     NavComponent,
