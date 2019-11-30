@@ -1,19 +1,19 @@
-## <center>ʘttʘ<center>
+## <center>Otto<center>
 __MQTT Control Panel__
 
 ----------------------------
 
 User documentation can be found at [otto.zenly.xyz/docs](https://otto.zenly.xyz/docs)
 
-## Running ʘttʘ
+## Running Otto
 
-ʘttʘ is free to use at __[https://otto.zenly.xyz/](https://otto.zenly.xyz/)__.
+Otto is free to use at __[https://otto.zenly.xyz/](https://otto.zenly.xyz/)__.
 
 ### Development Environment
 
 #### The Docker Way
 
-Run `make up logs` to bring ʘttʘ up,then point a browser at http://localhost:4200/
+Run `make up logs` to bring Otto up,then point a browser at http://localhost:4200/
 
 ### Building and Running The Production Image
 

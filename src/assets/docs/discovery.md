@@ -5,7 +5,7 @@
 
 ### Configuring Switches
 
-Suppose we configure ʘttʘ to use a "discover prefix" of "homeassistant", and we publish a retained message like this:
+Suppose we configure Otto to use a "discover prefix" of "homeassistant", and we publish a retained message like this:
 
 * topic: `homeassistant/switch/sprinkler/config`
 * payload: `{"name": "Sprinkler system", "state_topic": "homeassistant/switch/sprinkler/state", "command_topic": "homeassistant/switch/sprinkler/set"}`
@@ -29,4 +29,4 @@ Sometimes sensors publish json data as their payload. Simple json paths can be g
 
 ### Publishing Retained Messages
 
-If you already have ʘttʘ connected to your MQTT server, the quickest way of publishing these messages is from the [publish tab](/publish).
+If you already have Otto connected to your MQTT server, the quickest way of publishing these messages is from the [publish tab](/publish).

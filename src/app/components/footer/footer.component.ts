@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class FooterComponent implements OnInit {
 
   url = "https://otto.zenly.xyz";
-  text = "@doug_gibbons - thanks for ʘttʘ!";
+  text = "@doug_gibbons - thanks for Otto!";
 
   constructor() { }
 

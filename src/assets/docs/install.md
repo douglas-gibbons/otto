@@ -1,7 +1,7 @@
-## Running ʘttʘ
+## Running Otto
 
 Just navigate to __[https://otto.zenly.xyz/](https://otto.zenly.xyz/)__.
 
-## Installing your own version of ʘttʘ
+## Installing your own version of Otto
 
-If you want to run ʘttʘ yourself, have a look at the instructions on [Github](https://github.com/douglas-gibbons/otto/blob/master/README.md)
+If you want to run Otto yourself, have a look at the instructions on [Github](https://github.com/douglas-gibbons/otto/blob/master/README.md)

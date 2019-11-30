@@ -22,7 +22,6 @@ export class Device {
   public isOn() {
     return this.state == "ON";
   }
-
 }
 
 @Injectable({
