@@ -9,7 +9,7 @@ There is no need to install Otto itself, as it is freely available at [otto.zenl
 
 Otto gets its configuration from two places:
 
-1. The [configuration tab](/identity), where you configure a connection to the MQTT broker. These settings are stored in your browser.
+1. The [configuration tab](/identity), where you configure a connection to the MQTT broker. These settings are stored in your browser's local storage.
 1. Retained messages from your MQTT broker.
 
 First, navigate to the [configuration](identity) tab and enter details of your MQTT server.
@@ -22,4 +22,4 @@ Now you'll need to add retained messages to inform Otto about topics it can use 
 
 Selecting the "ws" protocol will cause an error on the [secure otto site](https://otto.zenly.xyz/), as your browser won't allow insecure connections from a secure page.
 
-However, otto also runs from [http://otto.zenly.xyz/](https://otto.zenly.xyz/), where you _can_ make insecure connections. Otto itself does not store or transmit your MQTT connection information. This is transmitted direct from your browser, so take necessary precautions to ensure you don't leak credentials over the internet.
+However, otto also runs from [http://otto.zenly.xyz/](https://otto.zenly.xyz/), where you _can_ make insecure connections. Otto itself does not store or transmit your MQTT connection information. This is transmitted direct from your browser, so please take necessary precautions to ensure that you don't leak credentials over the internet.
