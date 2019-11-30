@@ -29,6 +29,7 @@
             "styles": [
               "src/styles.scss",
               "src/bulmaswatch-darkly.min.css",
+              "node_modules/open-iconic/font/css/open-iconic-bootstrap.css",
             ],
             "scripts": [
               "node_modules/marked/lib/marked.js",

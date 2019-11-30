@@ -34,3 +34,16 @@ button:focus {outline:0 !important;}
 .field-body {
   margin-right: 10px;
 }
+
+.spin {
+		-webkit-animation: rotation 2s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+		from {
+				-webkit-transform: rotate(0deg);
+		}
+		to {
+				-webkit-transform: rotate(359deg);
+		}
+}

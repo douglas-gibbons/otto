@@ -25,6 +25,7 @@
     "guid-typescript": "^1.0.9",
     "ngx-markdown": "^8.2.1",
     "ngx-mqtt": "6.10.0",
+    "open-iconic": "^1.1.1",
     "rxjs": "~6.5.3",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
