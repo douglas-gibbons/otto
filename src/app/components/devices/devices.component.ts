@@ -14,7 +14,6 @@ export class DevicesComponent implements OnInit {
   public editDevice: Device;
   public isNewDevice: boolean = true; // True for creating device, false for editing an old one
   public isModalActive: boolean = false;
-  public deleting: boolean = false; // about to delete something
 
   constructor(
     private deviceService: DeviceService,
@@ -36,10 +35,6 @@ export class DevicesComponent implements OnInit {
     return false;
   }
 
-  delete(device: Device) {
-    this.deviceService.delete(device);
-  }
-
   new(component: string) {
     this.isNewDevice = true;
     this.editDevice = new Device();
@@ -51,22 +46,18 @@ export class DevicesComponent implements OnInit {
     return false;
   }
 
-  cancelDelete() {
-    this.deleting = false;
+  cancelDelete(device) {
+    device.isDeleting = false;
+    this.messageService.temporaryMessage(Level.Info, "Deletion cancelled");
   }
-  modalDelete() {
-    // TODO this will cancel all pending deletes upon deletion.
+  modalDelete(device) {
     this.isModalActive = false;
-    this.deleting = true;
+    device.isDeleting = true;
 
-    let t = this;
     setTimeout(() => {
       // Did we cancel the delete
-      if (t.deleting == false) {
-        t.messageService.temporaryMessage(Level.Info, "Deletion cancelled");
-      } else {
-        t.delete(t.editDevice);
-        t.deleting = false;
+      if (device.isDeleting != false) {
+        this.deviceService.delete(device);
       }
     }, 5000);
 
@@ -74,8 +65,8 @@ export class DevicesComponent implements OnInit {
   modalCancel() {
     this.isModalActive = false;
   }
-  modalSave() {
-    this.save(this.editDevice);
+  modalSave(device) {
+    this.save(device);
     this.isModalActive = false;
   }
   modalChangeConfigTopic() {

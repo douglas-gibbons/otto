@@ -17,7 +17,8 @@ export class Device {
   public isLoading: boolean = false;
   public isExpanded : boolean = false; // Viewing devices in devices component
   public component: string; // device type; switch or sensor
-  public rawState: string // Device state message (not value of json path)
+  public rawState: string; // Device state message (not value of json path)
+  public isDeleting: boolean; // Set to true if pending deletion
   public isOn() {
     return this.state == "ON";
   }
