@@ -16,10 +16,10 @@ First, navigate to the [configuration](identity) tab and enter details of your M
 
 Now you'll need to add retained messages to inform Otto about topics it can use to read and control devices. See the [discovery](/docs/discovery/) page.
 
-## Advanced Use Cases
+## FAQ
 
-#### Using an MQT broker over insecure websockets (HTTP rather than HTTPS)
+#### Can I use an MQT broker over insecure websockets (HTTP rather than HTTPS)?
 
-The public Otto service runs over HTTPS. Most modern browsers will block HTTP requests from an HTTPS page, so you will need to run Otto over HTTP as well.
+Selecting the "ws" protocol will cause an error on the [secure otto site](https://otto.zenly.xyz/), as your browser won't allow insecure connections from a secure page.
 
-Simply follow the [installation instructions](../install/) rather than using the public Otto service.
+However, otto also runs from [http://otto.zenly.xyz/](https://otto.zenly.xyz/), where you _can_ make insecure connections. Otto itself does not store or transmit your MQTT connection information. This is transmitted direct from your browser, so take necessary precautions to ensure you don't leak credentials over the internet.

@@ -1,32 +1,8 @@
 ## Device Discovery
 
+Otto reads retained MQTT messages from the `DISCOVERY_PREFIX/+/+/config` message topic. Where DISCOVERY_PREFIX is the prefix configured on the [configuration](https://otto.zenly.xyz/identity) screen, and "+" are wildcards.  It uses these messages to populate the control panel.
+
 * A complete example of discovery messages can be found on the [Connecting to Shiftr.io](/docs/shiftr/) page.
 * Also see [home assistant documentation](https://www.home-assistant.io/docs/mqtt/discovery/) for format of auto discovery messages.
 
-### Configuring Switches
-
-Suppose we configure Otto to use a "discover prefix" of "homeassistant", and we publish a retained message like this:
-
-* topic: `homeassistant/switch/sprinkler/config`
-* payload: `{"name": "Sprinkler system", "state_topic": "homeassistant/switch/sprinkler/state", "command_topic": "homeassistant/switch/sprinkler/set"}`
-
-Clicking on the web interface button to turn the sprinkler on will send a message on topic `homeassistant/switch/sprinkler/set` with a payload of `ON`
-
-Once the sprinkler has been turned on, whatever is controlling it is expected to set `homeassistant/switch/sprinkler/state` to `ON` and set the retain flag on that message.
-
-Likewise for turning our example sprinkler off.
-
-This use of "set" and "state" messages is compatible with [Home Assistant](https://www.home-assistant.io/components/switch.mqtt/).
-
-### Configuring Sensors
-
-Suppose we have a temperature sensor, publishing temperature to the topic "homeassistant/sensor/temperature". We would want to create a retained configuration message like this:
-
-* topic: `homeassistant/sensor/temperature/config`
-* payload: `{"name": "Temperature", "unit_of_measurement": "°C", "state_topic": "homeassistant/sensor/temperature"}`
-
-Sometimes sensors publish json data as their payload. Simple json paths can be given as part of the configuration for this. See [this example](https://github.com/douglas-gibbons/otto/wiki/pow2).
-
-### Publishing Retained Messages
-
-If you already have Otto connected to your MQTT server, the quickest way of publishing these messages is from the [publish tab](/publish).
+You can add a new device to Otto, simply by publishing one of these MQTT messages, and the easiest way of doing that is by clicking the "New" button on the [devices page](https://otto.zenly.xyz/devices).
