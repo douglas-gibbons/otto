@@ -117,7 +117,7 @@
 
 
 
-<!-- Main content -->
+<!-- ------------- Main content ------------- -->
 
 <div class="card">
   <header class="card-header">
@@ -144,9 +144,17 @@
 
   <div class="card">
     <header class="card-header">
+
+
       <p class="card-header-title">
-        {{ device.name }}
+        <!-- Show as on or off -->
+        <span [ngClass]="{'has-text-danger': device.isOn(), 'has-text-grey': ! device.isOn() }" (click)="action(device)">
+          <i [className]="device.component == 'switch' ? 'fa fa-power-off' : 'fa fa-tachometer-alt'"></i>
+        </span>
+
+        &nbsp; {{ device.name }}
       </p>
+
 
       <a class="card-header-icon card-toggle" (click)="expand(device)">
         <i class="fa fa-angle-down"></i>
@@ -183,7 +191,7 @@
           </div>
         </div>
 
-        <div class="field is-horizontal">
+        <div [className]="device.component == 'switch' ? 'field is-horizontal' : 'is-hidden'">
           <div class="field-label is-normal">
             <label class="label">Command Topic</label>
           </div>
@@ -210,21 +218,21 @@
         </div>
 
 
-        <div class="field is-horizontal">
+        <div [className]="device.component == 'sensor' ? 'field is-horizontal' : 'is-hidden'">
           <div class="field-label is-normal">
             <label class="label">State Json Path</label>
           </div>
           <div class="field-body">
             <div class="field">
               <div class="control">
-                <input class="input" type="text" placeholder="Json path to measurement value within state message" [(ngModel)]="device.jsonPath">
+                <input class="input" type="text" placeholder="Json path to measurement value within state message. Can be blank for simple text fields." [(ngModel)]="device.jsonPath">
               </div>
             </div>
           </div>
         </div>
 
 
-        <div class="field is-horizontal">
+        <div [className]="device.component == 'sensor' ? 'field is-horizontal' : 'is-hidden'">
           <div class="field-label is-normal">
             <label class="label">Unit of Measurement</label>
           </div>
@@ -232,6 +240,20 @@
             <div class="field">
               <div class="control">
                 <input class="input" type="text" [(ngModel)]="device.unitOfMeasurement">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Only show the raw state if there is a JSON path entry -->
+        <div [className]="device.jsonPath != '' ? 'field is-horizontal' : 'is-hidden'">
+          <div class="field-label is-normal">
+            <label class="label">Raw state</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" disabled [(ngModel)]="device.rawState">
               </div>
             </div>
           </div>
@@ -249,7 +271,6 @@
             </div>
           </div>
         </div>
-
 
       </div>
     </div>

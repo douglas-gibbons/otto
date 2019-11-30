@@ -8,7 +8,7 @@
     <div class="content">
 
       <ng-container *ngFor="let device of devices">
-        <p *ngIf="device.commandTopic">
+        <p *ngIf="device.component == 'switch'">
           <a class="button is-left" (click)="action(device)">
             <span [ngClass]="{'has-text-danger': device.isOn(), 'has-text-grey': ! device.isOn() }">
               <i class="fas fa-power-off" *ngIf="! device.isLoading"></i>
@@ -37,7 +37,7 @@
       <!-- Text outputs -->
       <ul class="sensor">
         <ng-container *ngFor="let device of devices">
-          <li *ngIf="! device.commandTopic">
+          <li *ngIf="device.component == 'sensor'">
             {{ device.name }} : {{ device.state}} {{ device.unitOfMeasurement }}
         </ng-container>
       </ul>

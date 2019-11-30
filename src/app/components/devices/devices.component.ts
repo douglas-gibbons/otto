@@ -32,7 +32,6 @@ export class DevicesComponent implements OnInit {
     return false;
   }
 
-
   delete(device: Device) {
     this.deviceService.delete(device);
   }
@@ -61,5 +60,13 @@ export class DevicesComponent implements OnInit {
   createConfigTopic(device: Device): string {
     let id = device.name.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
     return deviceSettings.prefix + "/" + device.component + "/" + id + "/config";
+  }
+
+  action(device) {
+    if (device.isOn()) {
+      this.deviceService.turnOff(device);
+    } else {
+      this.deviceService.turnOn(device);
+    }
   }
 }

@@ -17,6 +17,7 @@ export class Device {
   public isLoading: boolean = false;
   public isExpanded : boolean = false; // Viewing devices in devices component
   public component: string; // device type; switch or sensor
+  public rawState: string // Device state message (not value of json path)
   public isOn() {
     return this.state == "ON";
   }
@@ -100,6 +101,7 @@ export class DeviceService {
       device.commandTopic = payload.command_topic;
       device.unitOfMeasurement = payload.unit_of_measurement;
       device.jsonPath = payload.json_path;
+      device.component = message.topic.toString().split('/')[1];
       this.pushDevice(device);
       this.subscribeDevice(device);
 
@@ -123,7 +125,8 @@ export class DeviceService {
     if (device.stateTopic != undefined) {
       let subs = this.mqttService.observeRetained(device.stateTopic).subscribe(
         (message: IMqttMessage) => {
-          device.state = message.payload.toString();
+          device.rawState = message.payload.toString();
+          device.state = device.rawState;
           if (this.isJson(device.state) && device.jsonPath) {
             device.state = this.fromJsonPath(device.jsonPath, device.state);
           }
@@ -191,6 +194,7 @@ export class DeviceService {
     );
   }
   public delete(device) {
+    // Sending a retained message with an empty message deletes that message
     this.publish(device.configTopic, "", true).subscribe(
       () => this.messageService.temporaryMessage(Level.Info, "Deleted \"" + device.name + "\"")
     );
