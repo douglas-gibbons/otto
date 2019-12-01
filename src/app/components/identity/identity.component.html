@@ -12,13 +12,13 @@
       <div class="field">
         <label class="label">Hostname</label>
         <div class="control">
-          <input class="input" type="text" [(ngModel)]="mqttSettings.hostname" (ngModelChange)="saveSetting('hostname')">
+          <input class="input" type="text" [(ngModel)]="mqttSettings.hostname" (ngModelChange)="saveSetting('hostname')" data-index="1">
         </div>
       </div>
       <div class="field">
         <label class="label">Port</label>
         <div class="control">
-          <input class="input" type="number" [(ngModel)]="mqttSettings.port" (ngModelChange)="saveSetting('port')">
+          <input class="input" type="number" [(ngModel)]="mqttSettings.port" (ngModelChange)="saveSetting('port')" data-index="2">
         </div>
       </div>
 
@@ -26,7 +26,7 @@
         <label class="label">Protocol</label>
         <div class="control">
           <div class="select">
-            <select [(ngModel)]="mqttSettings.protocol" (ngModelChange)="saveSetting('protocol')">
+            <select [(ngModel)]="mqttSettings.protocol" (ngModelChange)="saveSetting('protocol')" data-index="3">
               <option *ngFor="let protocol of protocols">{{protocol}}</option>
             </select>
           </div>
@@ -36,26 +36,26 @@
       <div class="field">
         <label class="label">Path</label>
         <div class="control">
-          <input class="input" type="text" [(ngModel)]="mqttSettings.path" (ngModelChange)="saveSetting('path')">
+          <input class="input" type="text" [(ngModel)]="mqttSettings.path" (ngModelChange)="saveSetting('path')" data-index="4">
         </div>
       </div>
       <div class="field">
         <label class="label">Username</label>
         <div class="control">
-          <input class="input" type="text" [(ngModel)]="mqttSettings.username" (ngModelChange)="saveSetting('username')">
+          <input class="input" type="text" [(ngModel)]="mqttSettings.username" (ngModelChange)="saveSetting('username')" data-index="5">
         </div>
       </div>
       <div class="field">
         <label class="label">Password</label>
         <div class="control">
-          <input class="input" type="password" [(ngModel)]="mqttSettings.password" (ngModelChange)="saveSetting('password')">
+          <input class="input" type="password" [(ngModel)]="mqttSettings.password" (ngModelChange)="saveSetting('password')" data-index="6">
         </div>
       </div>
 
       <div class="field">
         <label class="label">Discovery Prefix</label>
         <div class="control">
-          <input class="input" type="text" [(ngModel)]="deviceSettings.prefix" (ngModelChange)="saveDeviceSetting('prefix')">
+          <input class="input" type="text" [(ngModel)]="deviceSettings.prefix" (ngModelChange)="saveDeviceSetting('prefix')" data-index="7">
         </div>
       </div>
 
