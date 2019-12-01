@@ -15,7 +15,7 @@ let port = localStorage.getItem('mqtt.port') || 15675;
 type Protocol = 'wss'|'ws'
 
 export const mqttSettings: IMqttServiceOptions = {
-  hostname: localStorage.getItem('mqtt.hostname') || document.location.hostname,
+  hostname: localStorage.getItem('mqtt.hostname') || "localhost",
   port: Number(port),
   path: localStorage.getItem('mqtt.path') || '/ws',
   username: localStorage.getItem('mqtt.username') || "user",

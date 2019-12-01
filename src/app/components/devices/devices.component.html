@@ -166,7 +166,7 @@
             </span>
             &nbsp; {{device.name}}
           </button>
-          <button *ngIf='device.isDeleting'(click)="cancelDelete(device)" class="button is-warning">Cancel deletion</button>
+          <button *ngIf='device.isDeleting' (click)="cancelDelete(device)" class="button is-warning">Cancel deletion</button>
           <button class="button" (click)="edit(device)">
             <i class="oi oi-cog has-text-grey"></i>
           </button>
@@ -176,9 +176,6 @@
 
     </div>
   </div>
-  <footer class="card-footer">
-    <button (click)="new('switch')" class="button is-success is-small">New switch</button>
-  </footer>
 </div>
 
 <div class="card">
@@ -195,7 +192,7 @@
           <button class="button button-fill button-sensor" disabled>
             {{device.name}} &nbsp; {{ device.state}} {{ device.unitOfMeasurement }}
           </button>
-          <button *ngIf='device.isDeleting'(click)="cancelDelete(device)" class="button is-warning">Cancel deletion</button>
+          <button *ngIf='device.isDeleting' (click)="cancelDelete(device)" class="button is-warning">Cancel deletion</button>
           <button class="button" (click)="edit(device)">
             <i class="oi oi-cog has-text-grey"></i>
           </button>
@@ -203,7 +200,11 @@
 
       </ng-container>
     </div>
-    <footer class="card-footer">
-      <button (click)="new('sensor')" class="button is-success is-small">New sensor</button>
-    </footer>
   </div>
+</div>
+
+<div class="card">
+  <footer class="card-footer">
+    <button (click)="new('switch')" class="button is-success is-small">New device</button>
+  </footer>
+</div>
