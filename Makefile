@@ -15,3 +15,7 @@ logs: ## Docker logs
 
 down: ## put the dev stack down
 	docker-compose down
+
+build-mobile: ## Build mobile version and copy content into directory for cordova
+	npm run build-mobile
+	cd mobile && cordova emulate android

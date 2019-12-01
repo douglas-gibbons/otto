@@ -44,3 +44,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# cordova
+mobile/node_modules
+mobile/www
+mobile/platforms
+mobile/plugins

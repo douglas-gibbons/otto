@@ -18,14 +18,11 @@ export class DocsComponent implements OnInit {
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
        let page = params['page'];
-
        // Tasmota wiki redirect
        if (page == "tasmota") {
          window.location.href = "https://github.com/douglas-gibbons/otto/wiki/tasmota";
        }
-
        if (page) {
-         console.log("Loading page " + page);
          this.markdownSource = 'assets/docs/' + page + ".md";
        }
     });

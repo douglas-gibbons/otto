@@ -12,13 +12,13 @@
       <div class="field">
         <label class="label">Hostname</label>
         <div class="control">
-          <input class="input" type="text" [(ngModel)]="mqttSettings.hostname" (ngModelChange)="saveSetting('hostname')" data-index="1">
+          <input class="input" type="text" [(ngModel)]="mqttSettings.hostname" (ngModelChange)="saveSetting('hostname')" data-index="1"  autocorrect="off" autocapitalize="none">
         </div>
       </div>
       <div class="field">
         <label class="label">Port</label>
         <div class="control">
-          <input class="input" type="number" [(ngModel)]="mqttSettings.port" (ngModelChange)="saveSetting('port')" data-index="2">
+          <input class="input" type="number" [(ngModel)]="mqttSettings.port" (ngModelChange)="saveSetting('port')" data-index="2" pattern="[0-9]*">
         </div>
       </div>
 
@@ -36,13 +36,13 @@
       <div class="field">
         <label class="label">Path</label>
         <div class="control">
-          <input class="input" type="text" [(ngModel)]="mqttSettings.path" (ngModelChange)="saveSetting('path')" data-index="4">
+          <input class="input" type="text" [(ngModel)]="mqttSettings.path" (ngModelChange)="saveSetting('path')" data-index="4"  autocorrect="off" autocapitalize="none" type="url">
         </div>
       </div>
       <div class="field">
         <label class="label">Username</label>
         <div class="control">
-          <input class="input" type="text" [(ngModel)]="mqttSettings.username" (ngModelChange)="saveSetting('username')" data-index="5">
+          <input class="input" type="text" [(ngModel)]="mqttSettings.username" (ngModelChange)="saveSetting('username')" data-index="5" autocorrect="off" autocapitalize="none">
         </div>
       </div>
       <div class="field">

@@ -61,7 +61,7 @@
         <div class="field-body">
           <div class="field">
             <div class="control">
-              <input class="input" type="text" placeholder="Set to the MQTT topic to control the device. Devices with blank command topics are assumed to be sensors" [(ngModel)]="editDevice.commandTopic">
+              <input class="input" type="text" placeholder="Set to the MQTT topic to control the device. Devices with blank command topics are assumed to be sensors" [(ngModel)]="editDevice.commandTopic" autocorrect="off" autocapitalize="none" type="url">
             </div>
           </div>
         </div>
@@ -74,7 +74,7 @@
         <div class="field-body">
           <div class="field">
             <div class="control">
-              <input class="input" type="text" [(ngModel)]="editDevice.stateTopic">
+              <input class="input" type="text" [(ngModel)]="editDevice.stateTopic" autocorrect="off" autocapitalize="none" type="url">
             </div>
           </div>
         </div>
@@ -88,7 +88,7 @@
         <div class="field-body">
           <div class="field">
             <div class="control">
-              <input class="input" type="text" placeholder="Json path to measurement value within state message" [(ngModel)]="editDevice.jsonPath">
+              <input class="input" type="text" placeholder="Json path to measurement value within state message" [(ngModel)]="editDevice.jsonPath" autocorrect="off" autocapitalize="none" type="url">
             </div>
           </div>
         </div>
@@ -101,7 +101,7 @@
         <div class="field-body">
           <div class="field">
             <div class="control">
-              <input class="input" type="text" [(ngModel)]="editDevice.unitOfMeasurement">
+              <input class="input" type="text" [(ngModel)]="editDevice.unitOfMeasurement" autocorrect="off" autocapitalize="none">
             </div>
           </div>
         </div>
