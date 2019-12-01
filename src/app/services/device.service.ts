@@ -55,7 +55,7 @@ export class DeviceService {
     this.mqttService.onConnect.subscribe(
       () => {
         this.messageService.clear();
-        this.messageService.message(Level.Info, "Connected to MQTT broker")
+        this.messageService.message(Level.Success, "Connected to MQTT broker")
         this.subscribeDevices();
       });
 

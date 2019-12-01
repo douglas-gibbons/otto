@@ -18,19 +18,19 @@ export class Message {
   levelIcon(): string {
     switch (this.level) {
       case Level.Info: {
-        return "fas fa-check-circle";
+        return "oi oi-info";
         break;
       }
       case Level.Success: {
-        return "fas fa-info-circle";
+        return "oi oi-check";
         break;
       }
       case Level.Warning: {
-        return "fas fa-exclamation-circle";
+        return "oi oi-warning";
         break;
       }
       case Level.Danger: {
-        return "fas fa-bomb";
+        return "oi oi-warning";
         break;
       }
     }
