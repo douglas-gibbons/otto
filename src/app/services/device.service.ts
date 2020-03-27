@@ -4,6 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { MqttService, IMqttMessage, MqttConnectionState } from 'ngx-mqtt';
 import { mqttSettings, deviceSettings } from '../../environments/environment';
 import { MessageService, Level } from './message.service';
+import * as jp from 'jsonpath';
 
 export class Device {
   constructor() { }
@@ -97,10 +98,33 @@ export class DeviceService {
       let device = new Device();
       device.name = payload.name;
       device.configTopic = message.topic.toString();
+
       device.stateTopic = payload.state_topic;
       device.commandTopic = payload.command_topic;
+
+      // Alternative names
+      if (payload.stat_t != undefined) {
+        device.stateTopic = payload.stat_t;
+      }
+      if (payload.cmd_t != undefined) {
+        device.commandTopic = payload.cmd_t;
+      }
+
+      var subRe = /\~/;
+      if (payload["~"] != undefined) {
+        if (device.stateTopic != undefined) {
+          device.stateTopic = device.stateTopic.replace(subRe,payload["~"]);
+        }
+        if (device.commandTopic != undefined) {
+          device.commandTopic = device.commandTopic.replace(subRe,payload["~"]);
+        }
+      }
+
       device.unitOfMeasurement = payload.unit_of_measurement;
       device.jsonPath = payload.json_path;
+      if (payload.val_tpl != undefined) {
+        device.jsonPath = payload.val_tpl;
+      }
       device.component = message.topic.toString().split('/')[1];
       this.pushDevice(device);
       this.subscribeDevice(device);
@@ -142,20 +166,26 @@ export class DeviceService {
 
   // Get reading from a json path, represented as a string
   private fromJsonPath(path: string, text: string): string {
-    let obj = JSON.parse(text)
 
-    let keys = path.split('.');
-    for (let key of keys) {
+    // "{{ }}"
+    var reBrackets = /^{{\s*(.*)\s*}}$/;
+    path = path.replace(reBrackets, "$1");
 
-      // Failed to find the key
-      if (!(key in obj)) {
-        this.messageService.message(Level.Warning, "Could not find value for key '" + key + "' in payload");
-        return "?";
-      }
+    // "value_json." or json:
+    var rePath1 = /^value_json\s*/;
+    path = path.replace(rePath1, "");
+    var rePath2 = /^json\s*/;
+    path = path.replace(rePath2, "");
 
-      obj = obj[key]
+    if (path.startsWith("[")) {
+      path = "$.." + path;
+    } else {
+      path = "$." + path;
     }
-    return obj;
+    let obj = JSON.parse(text);
+    let val = jp.query(obj, path, 1);
+
+    return val;
   }
 
   // Check if given text is a JSON object
@@ -206,7 +236,6 @@ export class DeviceService {
         return
       }
     }
-
   }
 
   private deviceToJson(device): string {
