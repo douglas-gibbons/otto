@@ -185,7 +185,7 @@ export class DeviceService {
     let obj = JSON.parse(text);
     let val = jp.query(obj, path, 1);
 
-    return val;
+    return String(val);
   }
 
   // Check if given text is a JSON object

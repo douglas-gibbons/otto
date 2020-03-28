@@ -2,8 +2,8 @@ FROM node:12.13.1-alpine as node
 
 RUN \
   apk add --no-cache git && \
-  npm install -g @angular/cli && \
-  npm install -g @angular/compiler-cli
+  npm install -g @angular/cli@^9.1.0 && \
+  npm install -g @angular/compiler-cli@^9.1.0
 
 COPY entrypoint.sh /entrypoint.sh
 
