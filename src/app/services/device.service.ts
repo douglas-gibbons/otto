@@ -16,7 +16,7 @@ export class Device {
   public jsonPath: string; // Json path to required measurement
   public state: string;
   public isLoading: boolean = false;
-  public isExpanded : boolean = false; // Viewing devices in devices component
+  public isExpanded: boolean = false; // Viewing devices in devices component
   public component: string; // device type; switch or sensor
   public rawState: string; // Device state message (not value of json path)
   public isDeleting: boolean; // Set to true if pending deletion
@@ -112,11 +112,14 @@ export class DeviceService {
 
       var subRe = /\~/;
       if (payload["~"] != undefined) {
-        if (device.stateTopic != undefined) {
-          device.stateTopic = device.stateTopic.replace(subRe,payload["~"]);
-        }
         if (device.commandTopic != undefined) {
-          device.commandTopic = device.commandTopic.replace(subRe,payload["~"]);
+          device.commandTopic = device.commandTopic.replace(subRe, payload["~"]);
+        }
+        if (payload["pl_off"] != undefined) {
+          // Tasmota switches
+          device.stateTopic = payload["~"] + "stat/POWER";
+        } else {
+          device.stateTopic = device.stateTopic.replace(subRe, payload["~"]);
         }
       }
 
@@ -232,7 +235,7 @@ export class DeviceService {
     // Remove device from list of devices
     for (let i = 0; i < this.devices.length; i++) {
       if (this.devices[i].configTopic == device.configTopic) {
-        this.devices.splice(i,1);
+        this.devices.splice(i, 1);
         return
       }
     }
