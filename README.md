@@ -7,8 +7,6 @@ User documentation can be found at [otto.zenly.xyz/docs](https://otto.zenly.xyz/
 
 ## Running Otto
 
-Otto is free to use at __[https://otto.zenly.xyz/](https://otto.zenly.xyz/)__.
-
 ### Development Environment
 
 #### The Docker Way
